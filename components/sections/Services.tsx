@@ -1,27 +1,30 @@
 import Image from 'next/image';
 import { services } from '@/lib/site';
 import { serviceIconMap, CheckIcon, ArrowRightIcon } from '../icons';
+import { Reveal } from '../Reveal';
 
 export function Services() {
   return (
-    <section id="services" className="bg-gray-50 py-24 lg:py-32">
+    <section id="services" className="bg-white py-24 lg:py-32">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Our Services</span>
           <h2 className="section-title mt-4">Expert Exterior Solutions, Done Right</h2>
           <p className="mt-5 text-lg text-gray-600">
             From siding and windows to doors and custom decks, we deliver premium craftsmanship that
             protects your home and elevates its value.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
-          {services.map((s) => {
+          {services.map((s, i) => {
             const Icon = serviceIconMap[s.icon];
             return (
-              <article
+              <Reveal
                 key={s.slug}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                as="article"
+                delay={(i % 2) * 120}
+                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-gold/40"
               >
                 <div className="relative h-60 overflow-hidden">
                   <Image
@@ -60,7 +63,7 @@ export function Services() {
                     </a>
                   </div>
                 </div>
-              </article>
+              </Reveal>
             );
           })}
         </div>

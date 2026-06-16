@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { site } from '@/lib/site';
 import { CheckIcon, ArrowRightIcon } from '../icons';
+import { Reveal } from '../Reveal';
 
 const points = [
   'Premium materials with manufacturer warranties',
@@ -13,7 +14,7 @@ export function About() {
   return (
     <section id="about" className="bg-white py-24 lg:py-32">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="relative">
+        <Reveal variant="left" className="relative">
           <div className="relative overflow-hidden rounded-2xl shadow-card">
             <Image
               src="/images/about-deck-white.webp"
@@ -32,9 +33,9 @@ export function About() {
               Years of Experience
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal variant="right">
           <span className="eyebrow">About FBS Construction</span>
           <h2 className="section-title mt-4">
             New England&apos;s Trusted Exterior Renovation Experts
@@ -67,7 +68,7 @@ export function About() {
               <ArrowRightIcon className="h-5 w-5" />
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

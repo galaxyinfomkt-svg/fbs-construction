@@ -34,3 +34,5 @@ yarn-error.log*
 # local scratch / source assets
 /_raw_images
 _source_home.html
+
+.vercel

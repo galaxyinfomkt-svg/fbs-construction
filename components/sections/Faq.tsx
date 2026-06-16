@@ -1,10 +1,11 @@
 import { faqs } from '@/lib/site';
+import { Reveal } from '../Reveal';
 
 export function Faq() {
   return (
     <section id="faq" className="bg-gray-50 py-24 lg:py-32">
       <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
-        <div>
+        <Reveal variant="left">
           <span className="eyebrow">FAQ</span>
           <h2 className="section-title mt-4">Frequently Asked Questions</h2>
           <p className="mt-5 text-lg text-gray-600">
@@ -13,9 +14,9 @@ export function Faq() {
               Get in touch →
             </a>
           </p>
-        </div>
+        </Reveal>
 
-        <div className="divide-y divide-gray-200 rounded-2xl bg-white px-6 shadow-card ring-1 ring-gray-100 sm:px-8">
+        <Reveal variant="right" className="divide-y divide-gray-200 rounded-2xl bg-white px-6 shadow-card ring-1 ring-gray-100 sm:px-8">
           {faqs.map((f) => (
             <details key={f.question} className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-charcoal marker:hidden">
@@ -27,7 +28,7 @@ export function Faq() {
               <p className="mt-3 leading-relaxed text-gray-600">{f.answer}</p>
             </details>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

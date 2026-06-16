@@ -1,12 +1,13 @@
 import { site } from '@/lib/site';
 import { ContactForm } from '../ContactForm';
 import { PhoneIcon, MailIcon, PinIcon, ClockIcon } from '../icons';
+import { Reveal } from '../Reveal';
 
 export function Contact() {
   return (
     <section id="contact" className="bg-white py-24 lg:py-32">
       <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
+        <Reveal variant="left">
           <span className="eyebrow">Get In Touch</span>
           <h2 className="section-title mt-4">Let&apos;s Build Something Great</h2>
           <p className="mt-5 text-lg text-gray-600">
@@ -31,9 +32,11 @@ export function Contact() {
             </p>
             <p className="mt-2 text-sm text-gray-600">{site.localTowns.join(' · ')} and surrounding towns across Massachusetts, Rhode Island, Connecticut, New Hampshire, Vermont &amp; Maine.</p>
           </div>
-        </div>
+        </Reveal>
 
-        <ContactForm />
+        <Reveal variant="right">
+          <ContactForm />
+        </Reveal>
       </div>
     </section>
   );
