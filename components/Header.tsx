@@ -45,7 +45,7 @@ export function Header() {
       }`}
     >
       <div className="container-x flex h-[4.5rem] items-center justify-between lg:h-20">
-        <Link href="/" className="flex items-center" aria-label={`${site.name} home`}>
+        <Link href="/#home" className="flex items-center" aria-label={`${site.name} — back to top of home`}>
           <span className={`flex items-center rounded-lg px-2 py-1 transition-colors ${solid ? '' : 'bg-white/95'}`}>
             <Image
               src="/images/logo.webp"
