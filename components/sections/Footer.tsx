@@ -10,7 +10,11 @@ export function Footer() {
     <footer className="bg-charcoal text-white/70">
       <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <span className="inline-flex rounded-lg bg-white/95 px-2 py-1">
+          <Link
+            href="/#home"
+            aria-label={`${site.name} — back to top of home`}
+            className="inline-flex rounded-lg bg-white/95 px-2 py-1 transition-transform duration-300 hover:scale-105"
+          >
             <Image
               src="/images/logo.webp"
               alt={`${site.name} logo`}
@@ -18,7 +22,7 @@ export function Footer() {
               height={100}
               className="h-12 w-auto"
             />
-          </span>
+          </Link>
           <p className="mt-5 max-w-xs text-sm leading-relaxed">
             Premium home exterior solutions — siding, windows, doors and custom decks — for
             Massachusetts &amp; New England homeowners since {site.founded}.
