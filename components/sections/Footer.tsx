@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { site, services } from '@/lib/site';
 import { PhoneIcon, MailIcon, PinIcon } from '../icons';
 
@@ -41,15 +42,15 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {services.map((s) => (
               <li key={s.slug}>
-                <a href="#services" className="transition-colors hover:text-gold">
+                <Link href={`/services/${s.slug}`} className="transition-colors hover:text-gold">
                   {s.title}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a href="#contact" className="transition-colors hover:text-gold">
+              <Link href="/contact" className="transition-colors hover:text-gold">
                 Exterior Renovations
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -59,11 +60,11 @@ export function Footer() {
             Company
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li><a href="#about" className="hover:text-gold">About Us</a></li>
-            <li><a href="#gallery" className="hover:text-gold">Project Gallery</a></li>
-            <li><a href="#reviews" className="hover:text-gold">Reviews</a></li>
-            <li><a href="#faq" className="hover:text-gold">FAQ</a></li>
-            <li><a href="#contact" className="hover:text-gold">Free Estimate</a></li>
+            <li><Link href="/about" className="hover:text-gold">About Us</Link></li>
+            <li><Link href="/services" className="hover:text-gold">Services</Link></li>
+            <li><Link href="/gallery" className="hover:text-gold">Project Gallery</Link></li>
+            <li><Link href="/#reviews" className="hover:text-gold">Reviews</Link></li>
+            <li><Link href="/contact" className="hover:text-gold">Free Estimate</Link></li>
           </ul>
         </div>
 

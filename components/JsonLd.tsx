@@ -1,4 +1,4 @@
-import { site, services, faqs, reviews } from '@/lib/site';
+import { site, services, reviews } from '@/lib/site';
 
 const businessId = `${site.url}/#business`;
 
@@ -87,19 +87,9 @@ export function JsonLd() {
     inLanguage: 'en-US',
   };
 
-  const faqPage = {
-    '@type': 'FAQPage',
-    '@id': `${site.url}/#faq`,
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
-    })),
-  };
-
   const graph = {
     '@context': 'https://schema.org',
-    '@graph': [localBusiness, website, faqPage],
+    '@graph': [localBusiness, website],
   };
 
   return (

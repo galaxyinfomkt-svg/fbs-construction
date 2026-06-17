@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Reveal } from '../Reveal';
 import { site } from '@/lib/site';
 import { PhoneIcon, ArrowRightIcon } from '../icons';
@@ -67,10 +68,10 @@ export function Process() {
         </div>
 
         <Reveal className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#contact" className="btn-primary shine text-base">
+          <Link href="/contact" className="btn-primary shine text-base">
             Start Step 1 — Free Estimate
             <ArrowRightIcon className="h-5 w-5" />
-          </a>
+          </Link>
           <a href={`tel:${site.phoneRaw}`} className="btn-outline text-base">
             <PhoneIcon className="h-5 w-5" />
             {site.phone}

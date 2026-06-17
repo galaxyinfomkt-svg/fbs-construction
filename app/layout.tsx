@@ -3,6 +3,11 @@ import { Inter, Oswald } from 'next/font/google';
 import './globals.css';
 import { site } from '@/lib/site';
 import { JsonLd } from '@/components/JsonLd';
+import { TopBar } from '@/components/TopBar';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/sections/Footer';
+import { FloatingPhone } from '@/components/FloatingPhone';
+import { MobileCta } from '@/components/MobileCta';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -92,7 +97,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        <TopBar />
+        <Header />
+        <main className="pb-14 lg:pb-0">{children}</main>
+        <Footer />
+        <FloatingPhone />
+        <MobileCta />
         <JsonLd />
       </body>
     </html>

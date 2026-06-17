@@ -81,6 +81,14 @@ export type ServiceItem = {
   image: string;
   imageAlt: string;
   icon: 'siding' | 'window' | 'door' | 'deck';
+  // Detail-page content
+  metaTitle: string;
+  metaDescription: string;
+  heroTagline: string;
+  overview: string[];
+  benefits: { title: string; text: string }[];
+  options: { name: string; text: string }[];
+  galleryImages: { src: string; alt: string }[];
 };
 
 export const services: ServiceItem[] = [
@@ -99,6 +107,39 @@ export const services: ServiceItem[] = [
     image: '/images/project-siding-navy-bay.webp',
     imageAlt: 'New navy blue lap siding installed on a New England home by FBS Construction',
     icon: 'siding',
+    metaTitle: 'Siding Installation in Massachusetts | Vinyl & Fiber Cement',
+    metaDescription:
+      'Expert siding installation & replacement in Massachusetts and New England. Vinyl, fiber cement and engineered wood siding with insulation upgrades. Free estimates.',
+    heroTagline: 'Protect and transform your home with premium siding.',
+    overview: [
+      'Your siding is your home’s first line of defense against New England weather — and its single biggest visual statement. FBS Construction installs and replaces siding that looks stunning and performs for decades.',
+      'From full tear-offs and moisture-barrier upgrades to custom trim, soffit and fascia work, our certified crews deliver a flawless, energy-efficient exterior backed by leading manufacturer warranties.',
+    ],
+    benefits: [
+      {
+        title: 'Boost Curb Appeal & Value',
+        text: 'Fresh siding instantly modernizes your home and is one of the highest-ROI exterior upgrades you can make.',
+      },
+      {
+        title: 'Lower Energy Bills',
+        text: 'Insulated siding and proper weather barriers cut drafts and keep your home comfortable year-round.',
+      },
+      {
+        title: 'Built to Last',
+        text: 'Premium materials resist rot, fading and impact — with warranties that protect your investment.',
+      },
+    ],
+    options: [
+      { name: 'Vinyl Siding', text: 'Low-maintenance, durable and available in dozens of colors and profiles.' },
+      { name: 'Fiber Cement', text: 'Ultra-durable, fire-resistant siding with the look of natural wood.' },
+      { name: 'Engineered Wood', text: 'Authentic wood appearance with added strength and moisture resistance.' },
+      { name: 'Trim & Accents', text: 'Custom soffit, fascia, corner boards and shake accents to finish the look.' },
+    ],
+    galleryImages: [
+      { src: '/images/project-siding-navy-wall.webp', alt: 'Navy blue lap siding installation on a new home exterior' },
+      { src: '/images/project-siding-gray-garage.webp', alt: 'Gray siding installation on a multi-level home with attached garage' },
+      { src: '/images/hero-front.webp', alt: 'Full exterior renovation with gray siding and black shutters' },
+    ],
   },
   {
     slug: 'window-replacement',
@@ -115,6 +156,39 @@ export const services: ServiceItem[] = [
     image: '/images/project-board-batten.webp',
     imageAlt: 'New construction home with freshly installed windows and gray board-and-batten siding',
     icon: 'window',
+    metaTitle: 'Window Replacement in Massachusetts | Energy-Efficient Windows',
+    metaDescription:
+      'Energy-efficient window replacement in Massachusetts & New England. Double-hung, casement, bay & bow and more with ENERGY STAR® glass. Free estimates from FBS Construction.',
+    heroTagline: 'Cut energy bills and brighten every room.',
+    overview: [
+      'Drafty, foggy or hard-to-open windows drain your comfort and your wallet. FBS Construction replaces them with energy-efficient units that seal tight, open smoothly and transform how your home feels.',
+      'We handle precise measuring, weather-tight installation and clean finishing — so your new windows perform beautifully and look like they were always meant to be there.',
+    ],
+    benefits: [
+      {
+        title: 'Real Energy Savings',
+        text: 'ENERGY STAR® low-E glass and tight installation noticeably reduce heating and cooling costs.',
+      },
+      {
+        title: 'Year-Round Comfort',
+        text: 'Eliminate cold drafts and hot spots for a more consistent, comfortable indoor temperature.',
+      },
+      {
+        title: 'More Light & Quiet',
+        text: 'Modern windows flood rooms with natural light while reducing outside noise.',
+      },
+    ],
+    options: [
+      { name: 'Double-Hung', text: 'Classic, versatile and easy to clean — the New England favorite.' },
+      { name: 'Casement', text: 'Crank-open windows that seal tight and catch the breeze.' },
+      { name: 'Bay & Bow', text: 'Add space, light and a dramatic focal point to any room.' },
+      { name: 'Sliding & Picture', text: 'Expansive glass and easy operation for modern living.' },
+    ],
+    galleryImages: [
+      { src: '/images/project-board-batten.webp', alt: 'Gray board-and-batten siding with covered porch and new windows' },
+      { src: '/images/project-siding-navy-bay.webp', alt: 'Navy siding with bay window and white trim on a renovated home' },
+      { src: '/images/project-siding-navy-wall.webp', alt: 'New windows set into navy blue lap siding' },
+    ],
   },
   {
     slug: 'door-installation',
@@ -131,6 +205,39 @@ export const services: ServiceItem[] = [
     image: '/images/project-garage-navy.webp',
     imageAlt: 'Navy home with new garage doors and entry door installed by FBS Construction',
     icon: 'door',
+    metaTitle: 'Door Installation in Massachusetts | Entry, Patio & Storm Doors',
+    metaDescription:
+      'Professional door installation in Massachusetts & New England. Entry, patio, French and storm doors with security upgrades and energy-efficient cores. Free estimates.',
+    heroTagline: 'A bold first impression with rock-solid security.',
+    overview: [
+      'Your front door sets the tone for your entire home — and your patio and storm doors shape how you live every day. FBS Construction installs doors that look incredible, seal tight and lock up secure.',
+      'With energy-efficient insulated cores, premium hardware and expert weather sealing, every door we hang opens smoothly and keeps the elements where they belong: outside.',
+    ],
+    benefits: [
+      {
+        title: 'Enhanced Security',
+        text: 'Solid construction, quality locksets and proper installation protect what matters most.',
+      },
+      {
+        title: 'Energy Efficiency',
+        text: 'Insulated cores and tight weather sealing stop drafts and lower energy loss.',
+      },
+      {
+        title: 'Instant Curb Appeal',
+        text: 'A statement entry door dramatically elevates the look of your whole home.',
+      },
+    ],
+    options: [
+      { name: 'Entry Doors', text: 'Steel, fiberglass and wood entry doors in countless styles.' },
+      { name: 'Patio & Sliding', text: 'Bring the outdoors in with smooth-gliding patio doors.' },
+      { name: 'French Doors', text: 'Timeless, elegant double doors for interiors and patios.' },
+      { name: 'Storm Doors', text: 'Extra protection, ventilation and energy savings year-round.' },
+    ],
+    galleryImages: [
+      { src: '/images/project-garage-navy.webp', alt: 'Navy home with three-car garage doors and new entry door' },
+      { src: '/images/about-deck-white.webp', alt: 'White home with patio doors leading to a deck' },
+      { src: '/images/project-deck-framing.webp', alt: 'Patio doors above a newly framed deck' },
+    ],
   },
   {
     slug: 'custom-deck-construction',
@@ -147,6 +254,39 @@ export const services: ServiceItem[] = [
     image: '/images/project-deck-framing.webp',
     imageAlt: 'Custom deck framing under construction behind a gray-blue sided home',
     icon: 'deck',
+    metaTitle: 'Custom Deck Construction in Massachusetts | Composite & Wood',
+    metaDescription:
+      'Custom deck construction in Massachusetts & New England. Composite and natural wood decks with railings, stairs and built-in seating. Free estimates from FBS Construction.',
+    heroTagline: 'Extend your living space into the outdoors.',
+    overview: [
+      'A great deck turns your backyard into the best room in the house. FBS Construction designs and builds custom decks engineered for how your family actually lives, entertains and relaxes.',
+      'From code-compliant framing to railings, stairs, built-in seating and shade structures, we use durable composite or natural wood to create an outdoor space that lasts for years.',
+    ],
+    benefits: [
+      {
+        title: 'More Living Space',
+        text: 'Add a beautiful, functional outdoor room for dining, lounging and entertaining.',
+      },
+      {
+        title: 'Low-Maintenance Options',
+        text: 'Composite decking resists fading, staining and rot — spend more time enjoying, less maintaining.',
+      },
+      {
+        title: 'Built to Code',
+        text: 'Engineered, code-compliant framing means a deck that’s as safe as it is stunning.',
+      },
+    ],
+    options: [
+      { name: 'Composite Decking', text: 'Durable, low-maintenance boards in a range of premium colors.' },
+      { name: 'Natural Wood', text: 'Classic, warm wood decking with timeless appeal.' },
+      { name: 'Railings & Stairs', text: 'Custom railings, lighting and stairs tailored to your home.' },
+      { name: 'Built-Ins & Shade', text: 'Bench seating, pergolas and shade structures for true outdoor living.' },
+    ],
+    galleryImages: [
+      { src: '/images/project-deck-framing.webp', alt: 'New deck framing construction behind a gray-blue sided home' },
+      { src: '/images/project-deck-white.webp', alt: 'White composite deck with railings on a Massachusetts home' },
+      { src: '/images/about-deck-white.webp', alt: 'Backyard deck and patio on a white-sided New England home' },
+    ],
   },
 ];
 

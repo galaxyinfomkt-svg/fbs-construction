@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { site } from '@/lib/site';
 import { CheckIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
@@ -63,10 +64,10 @@ export function About() {
           </ul>
 
           <div className="mt-10">
-            <a href="#contact" className="btn-dark">
+            <Link href="/contact" className="btn-dark">
               Start Your Project
               <ArrowRightIcon className="h-5 w-5" />
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>

@@ -1,9 +1,24 @@
-import { faqs } from '@/lib/site';
+import { faqs, site } from '@/lib/site';
 import { Reveal } from '../Reveal';
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${site.url}/#faq`,
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
 
 export function Faq() {
   return (
     <section id="faq" className="bg-gray-50 py-24 lg:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
         <Reveal variant="left">
           <span className="eyebrow">FAQ</span>

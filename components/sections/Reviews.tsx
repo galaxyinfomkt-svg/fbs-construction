@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { reviews, site } from '@/lib/site';
 import { StarIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
@@ -67,10 +68,10 @@ export function Reviews() {
             <StarIcon className="h-5 w-5" />
             Read More on Google
           </a>
-          <a href="#contact" className="btn-primary shine text-base">
+          <Link href="/contact" className="btn-primary shine text-base">
             Join Our Happy Customers
             <ArrowRightIcon className="h-5 w-5" />
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

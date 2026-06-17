@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { gallery } from '@/lib/site';
 import { Reveal } from '../Reveal';
 import { CloseIcon, ArrowRightIcon } from '../icons';
@@ -105,10 +106,10 @@ export function Gallery() {
         </div>
 
         <Reveal className="mt-12 text-center">
-          <a href="#contact" className="btn-dark text-base">
+          <Link href="/contact" className="btn-dark text-base">
             Get a Look Like This — Free Estimate
             <ArrowRightIcon className="h-5 w-5" />
-          </a>
+          </Link>
         </Reveal>
       </div>
 

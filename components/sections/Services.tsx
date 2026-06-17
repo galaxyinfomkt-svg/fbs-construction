@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { services } from '@/lib/site';
 import { serviceIconMap, CheckIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
@@ -53,14 +54,20 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 pt-2">
-                    <a
-                      href="#contact"
+                  <div className="mt-6 flex items-center justify-between gap-3 pt-2">
+                    <Link
+                      href={`/services/${s.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-charcoal transition-colors hover:text-gold-dark"
                     >
-                      Request a Quote
+                      Learn More
                       <ArrowRightIcon className="h-4 w-4" />
-                    </a>
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-4 py-2 text-xs font-bold uppercase tracking-wide text-gold-dark transition-colors hover:bg-gold hover:text-charcoal"
+                    >
+                      Free Quote
+                    </Link>
                   </div>
                 </div>
               </Reveal>
@@ -71,9 +78,9 @@ export function Services() {
         <p className="mt-12 text-center text-gray-600">
           Need something more? We also handle full{' '}
           <span className="font-semibold text-charcoal">exterior renovations &amp; remodeling</span>.{' '}
-          <a href="#contact" className="font-semibold text-gold-dark underline-offset-4 hover:underline">
+          <Link href="/contact" className="font-semibold text-gold-dark underline-offset-4 hover:underline">
             Tell us about your project →
-          </a>
+          </Link>
         </p>
       </div>
     </section>
