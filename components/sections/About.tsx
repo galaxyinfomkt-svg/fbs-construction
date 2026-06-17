@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { site } from '@/lib/site';
 import { CheckIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
+import { Zoomable } from '../Zoomable';
 
 const points = [
   'Premium materials with manufacturer warranties',
@@ -16,16 +16,15 @@ export function About() {
     <section id="about" className="bg-white py-24 lg:py-32">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal variant="left" className="relative">
-          <div className="relative overflow-hidden rounded-2xl shadow-card">
-            <Image
-              src="/images/about-deck-white.webp"
-              alt="FBS Construction completed deck and exterior renovation on a New England home"
-              width={1400}
-              height={1050}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <Zoomable
+            src="/images/about-deck-white.webp"
+            alt="FBS Construction completed deck and exterior renovation on a New England home"
+            width={1400}
+            height={1050}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="rounded-2xl shadow-card"
+            imgClassName="h-full w-full object-cover"
+          />
           <div className="absolute -bottom-6 -right-4 hidden rounded-2xl bg-gold px-8 py-6 shadow-gold sm:block lg:-right-6">
             <p className="font-display text-5xl font-bold leading-none text-charcoal">
               {site.yearsExperience}

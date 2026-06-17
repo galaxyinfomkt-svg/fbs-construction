@@ -48,16 +48,20 @@ export default function ServicesPage() {
                   variant="scale"
                   className="grid items-center gap-8 overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-card lg:grid-cols-2"
                 >
-                  <div className={`relative h-64 lg:h-full lg:min-h-[22rem] ${reversed ? 'lg:order-2' : ''}`}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    aria-label={`${s.title} — learn more`}
+                    className={`group/img relative block h-64 overflow-hidden lg:h-full lg:min-h-[22rem] ${reversed ? 'lg:order-2' : ''}`}
+                  >
                     <Image
                       src={s.image}
                       alt={s.imageAlt}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover/img:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent lg:bg-gradient-to-r" />
-                  </div>
+                  </Link>
                   <div className="p-7 lg:p-10">
                     <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/15 text-gold-dark">
                       <Icon className="h-7 w-7" />

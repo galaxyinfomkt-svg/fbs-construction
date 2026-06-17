@@ -27,7 +27,11 @@ export function Services() {
                 delay={(i % 2) * 120}
                 className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-gold/40"
               >
-                <div className="relative h-60 overflow-hidden">
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="relative block h-60 overflow-hidden"
+                  aria-label={`${s.title} — learn more`}
+                >
                   <Image
                     src={s.image}
                     alt={s.imageAlt}
@@ -42,7 +46,7 @@ export function Services() {
                   <h3 className="absolute bottom-4 left-5 right-5 font-display text-2xl font-bold uppercase tracking-tight text-white">
                     {s.title}
                   </h3>
-                </div>
+                </Link>
 
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-gray-600">{s.description}</p>

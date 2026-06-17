@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { site } from '@/lib/site';
+import { PhoneIcon, ArrowRightIcon } from './icons';
 
 type Crumb = { label: string; href?: string };
 
@@ -9,12 +11,14 @@ export function PageHero({
   image,
   imageAlt,
   crumbs,
+  showCtas = true,
 }: {
   title: string;
   subtitle?: string;
   image: string;
   imageAlt?: string;
   crumbs: Crumb[];
+  showCtas?: boolean;
 }) {
   return (
     <section className="relative flex min-h-[46vh] items-center overflow-hidden pt-28 md:min-h-[52vh] md:pt-36">
@@ -59,6 +63,21 @@ export function PageHero({
           >
             {subtitle}
           </p>
+        )}
+        {showCtas && (
+          <div
+            className="mt-7 flex flex-col gap-3 sm:flex-row animate-fadeUp"
+            style={{ animationDelay: '240ms' }}
+          >
+            <Link href="/contact" className="btn-primary shine">
+              Get Free Estimate
+              <ArrowRightIcon className="h-5 w-5" />
+            </Link>
+            <a href={`tel:${site.phoneRaw}`} className="btn-outline">
+              <PhoneIcon className="h-5 w-5" />
+              {site.phone}
+            </a>
+          </div>
         )}
       </div>
     </section>

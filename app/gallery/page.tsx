@@ -17,8 +17,8 @@ export default function GalleryPage() {
       <PageHero
         title="Project Gallery"
         subtitle="Real transformations from real New England homes. See the FBS Construction difference."
-        image="/images/hero-front.webp"
-        imageAlt="Completed home exterior renovation by FBS Construction"
+        image="/images/project-townhomes.webp"
+        imageAlt="Row of new construction townhomes built by FBS Construction"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]}
       />
       <Gallery />

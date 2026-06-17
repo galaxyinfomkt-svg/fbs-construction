@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { Reveal } from '../Reveal';
+import { site } from '@/lib/site';
 import {
   ShieldIcon,
   CheckIcon,
@@ -6,6 +8,7 @@ import {
   StarIcon,
   DeckIcon,
   PhoneIcon,
+  ArrowRightIcon,
 } from '../icons';
 
 const features = [
@@ -75,6 +78,17 @@ export function WhyUs() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link href="/contact" className="btn-primary shine text-base">
+            Get Your Free Estimate
+            <ArrowRightIcon className="h-5 w-5" />
+          </Link>
+          <a href={`tel:${site.phoneRaw}`} className="btn-dark text-base">
+            <PhoneIcon className="h-5 w-5" />
+            {site.phone}
+          </a>
+        </Reveal>
       </div>
     </section>
   );

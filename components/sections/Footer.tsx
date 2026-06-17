@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { site, services } from '@/lib/site';
+import { site, services, cities } from '@/lib/site';
 import { PhoneIcon, MailIcon, PinIcon } from '../icons';
 
 const year = 2026;
@@ -89,6 +89,34 @@ export function Footer() {
             </li>
           </ul>
           <p className="mt-4 text-xs">{site.hoursLabel}</p>
+        </div>
+      </div>
+
+      {/* Service areas */}
+      <div className="border-t border-white/10">
+        <div className="container-x py-8">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 className="font-display text-base font-bold uppercase tracking-wide text-white">
+              Service Areas
+            </h3>
+            <Link
+              href="/service-areas"
+              className="text-xs font-bold uppercase tracking-wide text-gold hover:underline"
+            >
+              View all service areas →
+            </Link>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {cities.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/service-areas/${c.slug}`}
+                className="rounded-full bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-white/75 ring-1 ring-white/10 transition-colors hover:bg-gold hover:text-charcoal hover:ring-gold"
+              >
+                {c.name}, MA
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 

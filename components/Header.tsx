@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { site, services } from '@/lib/site';
-import { PhoneIcon, MenuIcon, CloseIcon, ArrowRightIcon } from './icons';
+import { PhoneIcon, MenuIcon, CloseIcon, ArrowRightIcon, PinIcon } from './icons';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -94,6 +94,14 @@ export function Header() {
                         <ArrowRightIcon className="h-4 w-4 opacity-40" />
                       </Link>
                     ))}
+                    <div className="my-1 border-t border-gray-100" />
+                    <Link
+                      href="/service-areas"
+                      className="flex items-center justify-between gap-2 px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-gold-dark transition-colors hover:bg-gold/10"
+                    >
+                      All Service Areas
+                      <PinIcon className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -130,7 +138,7 @@ export function Header() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
+          aria-expanded={open ? 'true' : 'false'}
           className={`lg:hidden ${solid ? 'text-charcoal' : 'text-white'}`}
         >
           {open ? <CloseIcon className="h-7 w-7" /> : <MenuIcon className="h-7 w-7" />}
@@ -165,6 +173,13 @@ export function Header() {
                       → {s.title}
                     </Link>
                   ))}
+                  <Link
+                    href="/service-areas"
+                    onClick={() => setOpen(false)}
+                    className="block py-2 text-sm font-bold uppercase tracking-wide text-gold-dark"
+                  >
+                    📍 All Service Areas
+                  </Link>
                 </div>
               )}
             </div>
