@@ -21,7 +21,7 @@ export function PageHero({
   showCtas?: boolean;
 }) {
   return (
-    <section className="relative flex min-h-[46vh] items-center overflow-hidden pt-28 md:min-h-[52vh] md:pt-36">
+    <section className="relative flex min-h-[46vh] items-center overflow-hidden pt-32 md:min-h-[52vh] md:pt-40">
       <Image
         src={image}
         alt={imageAlt || title}

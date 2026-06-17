@@ -60,8 +60,12 @@ export default async function CityServicePage({ params }: Params) {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
           { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
-          { '@type': 'ListItem', position: 3, name: `${found.name}, MA`, item: `${site.url}/service-areas/${found.slug}` },
-          { '@type': 'ListItem', position: 4, name: service.title, item: `${site.url}/service-areas/${found.slug}/${service.slug}` },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: `${service.title} in ${found.name}, MA`,
+            item: `${site.url}/service-areas/${found.slug}/${service.slug}`,
+          },
         ],
       },
     ],
@@ -79,8 +83,7 @@ export default async function CityServicePage({ params }: Params) {
         crumbs={[
           { label: 'Home', href: '/' },
           { label: 'Service Areas', href: '/service-areas' },
-          { label: found.name, href: `/service-areas/${found.slug}` },
-          { label: service.title },
+          { label: `${service.title} · ${found.name}` },
         ]}
       />
 

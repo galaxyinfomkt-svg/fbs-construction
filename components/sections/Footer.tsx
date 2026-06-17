@@ -110,7 +110,7 @@ export function Footer() {
             {cities.map((c) => (
               <Link
                 key={c.slug}
-                href={`/service-areas/${c.slug}`}
+                href={`/service-areas/${c.slug}/${services[0].slug}`}
                 className="rounded-full bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-white/75 ring-1 ring-white/10 transition-colors hover:bg-gold hover:text-charcoal hover:ring-gold"
               >
                 {c.name}, MA

@@ -39,7 +39,7 @@ export function Hero() {
           </div>
 
           <h1
-            className="font-display text-5xl font-bold uppercase leading-[1.04] tracking-tight text-white animate-fadeUp sm:text-6xl lg:text-7xl"
+            className="font-display text-[2.5rem] font-bold uppercase leading-[1.05] tracking-tight text-white animate-fadeUp sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '80ms' }}
           >
             Premium Home

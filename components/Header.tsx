@@ -38,7 +38,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 md:top-9 ${
+      className={`fixed inset-x-0 top-9 z-50 transition-all duration-300 ${
         solid
           ? 'bg-white/95 shadow-md backdrop-blur supports-[backdrop-filter]:bg-white/85'
           : 'bg-charcoal/70 backdrop-blur'
@@ -147,7 +147,7 @@ export function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-x-0 top-[4.5rem] z-40 max-h-[calc(100vh-4.5rem)] origin-top overflow-y-auto bg-white shadow-xl transition-all duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-[6.75rem] z-40 max-h-[calc(100svh-6.75rem)] origin-top overflow-y-auto bg-white shadow-xl transition-all duration-300 lg:hidden ${
           open ? 'pointer-events-auto opacity-100' : 'pointer-events-none -translate-y-2 opacity-0'
         }`}
       >
