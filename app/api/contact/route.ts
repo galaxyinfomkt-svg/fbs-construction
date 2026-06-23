@@ -50,16 +50,16 @@ export async function POST(request: Request) {
   const to = process.env.CONTACT_TO_EMAIL || site.email;
   const subject = `New Estimate Request — ${body.name} (${body.service || 'General'})`;
   const resendKey = process.env.RESEND_API_KEY;
-  const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
 
-  // 1) Resend (if configured) — best with a verified sending domain.
+  // Deliver via Resend — sends straight to the business inbox as a recipient,
+  // so the destination (Hotmail) never has to confirm or activate anything.
   if (resendKey) {
     try {
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          from: process.env.CONTACT_FROM_EMAIL || 'FBS Construction <onboarding@resend.dev>',
+          from: process.env.CONTACT_FROM_EMAIL || 'FBS Construction Website <onboarding@resend.dev>',
           to: [to],
           reply_to: body.email,
           subject,
@@ -77,38 +77,7 @@ export async function POST(request: Request) {
     }
   }
 
-  // 2) Web3Forms (if configured) — delivers to the business inbox, no domain needed.
-  if (web3Key) {
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: web3Key,
-          subject,
-          from_name: `${body.name} — FBS Website`,
-          replyto: body.email,
-          name: body.name,
-          phone: body.phone,
-          email: body.email,
-          service: body.service || '—',
-          town: body.town || '—',
-          message: body.message || '—',
-        }),
-      });
-      const data = (await res.json()) as { success?: boolean };
-      if (!res.ok || !data.success) {
-        console.error('Web3Forms error', data);
-        return NextResponse.json({ ok: false, error: 'Email failed' }, { status: 502 });
-      }
-      return NextResponse.json({ ok: true });
-    } catch (err) {
-      console.error('Contact send error (web3forms)', err);
-      return NextResponse.json({ ok: false, error: 'Email failed' }, { status: 502 });
-    }
-  }
-
-  // 3) No provider configured yet — log so the submission isn't lost.
-  console.log('[contact] (no email provider configured — logging submission)\n' + lines);
+  // No key configured yet — log so the lead isn't lost.
+  console.log('[contact] (no RESEND_API_KEY set — logging submission)\n' + lines);
   return NextResponse.json({ ok: true });
 }
