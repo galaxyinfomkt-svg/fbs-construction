@@ -24,7 +24,7 @@ export default function HomePage() {
       <StatsBand />
       <Reviews />
       <Faq />
-      <Contact />
+      <Contact showForm={false} />
       <CtaBanner />
     </>
   );

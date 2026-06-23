@@ -1,12 +1,15 @@
+import Link from 'next/link';
 import { site } from '@/lib/site';
 import { ContactForm } from '../ContactForm';
-import { PhoneIcon, MailIcon, PinIcon, ClockIcon } from '../icons';
+import { PhoneIcon, MailIcon, PinIcon, ClockIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
 
-export function Contact() {
+export function Contact({ showForm = true }: { showForm?: boolean }) {
   return (
     <section id="contact" className="bg-white py-24 lg:py-32">
-      <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div
+        className={`container-x grid gap-12 lg:gap-16 ${showForm ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}
+      >
         <Reveal variant="left">
           <span className="eyebrow">Get In Touch</span>
           <h2 className="section-title mt-4">Let&apos;s Build Something Great</h2>
@@ -32,11 +35,25 @@ export function Contact() {
             </p>
             <p className="mt-2 text-sm text-gray-600">{site.localTowns.join(' · ')} and surrounding towns across Massachusetts, Rhode Island, Connecticut, New Hampshire, Vermont &amp; Maine.</p>
           </div>
+
+          {!showForm && (
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#home" className="btn-primary shine">
+                Get Your Free Estimate
+                <ArrowRightIcon className="h-5 w-5" />
+              </a>
+              <Link href="/contact" className="btn-dark">
+                Contact Page
+              </Link>
+            </div>
+          )}
         </Reveal>
 
-        <Reveal variant="right">
-          <ContactForm />
-        </Reveal>
+        {showForm && (
+          <Reveal variant="right">
+            <ContactForm />
+          </Reveal>
+        )}
       </div>
     </section>
   );
