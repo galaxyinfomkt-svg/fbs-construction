@@ -129,7 +129,17 @@ export function Footer() {
           <p>
             © {year} {site.name}. All rights reserved. Licensed, bonded &amp; insured.
           </p>
-          <p>Siding · Windows · Doors · Decks · Exterior Renovations in MA &amp; New England</p>
+          <p>
+            Website by{' '}
+            <a
+              href="https://galaxyinfo.us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-gold transition-colors hover:text-gold-light"
+            >
+              galaxyinfo.us
+            </a>
+          </p>
         </div>
       </div>
     </footer>

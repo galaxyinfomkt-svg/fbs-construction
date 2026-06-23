@@ -20,7 +20,7 @@ export default function ContactPage() {
         imageAlt="Contact FBS Construction for a free estimate"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
-      <Contact />
+      <Contact showForm={false} />
       <Faq />
     </>
   );

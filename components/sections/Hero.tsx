@@ -107,7 +107,11 @@ export function Hero() {
         </div>
 
         {/* Right: estimate form */}
-        <div className="animate-fadeUp lg:pl-4" style={{ animationDelay: '240ms' }}>
+        <div
+          id="get-estimate"
+          className="animate-fadeUp scroll-mt-32 lg:pl-4"
+          style={{ animationDelay: '240ms' }}
+        >
           <HeroForm />
         </div>
       </div>

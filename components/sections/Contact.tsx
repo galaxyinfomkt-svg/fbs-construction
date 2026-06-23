@@ -38,7 +38,7 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
 
           {!showForm && (
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#home" className="btn-primary shine">
+              <a href="#get-estimate" className="btn-primary shine">
                 Get Your Free Estimate
                 <ArrowRightIcon className="h-5 w-5" />
               </a>
