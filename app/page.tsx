@@ -1,9 +1,10 @@
 import { Hero } from '@/components/sections/Hero';
 import { TrustBar } from '@/components/sections/TrustBar';
+import { Remodeling } from '@/components/sections/Remodeling';
 import { About } from '@/components/sections/About';
 import { WhyUs } from '@/components/sections/WhyUs';
-import { Services } from '@/components/sections/Services';
 import { Process } from '@/components/sections/Process';
+import { Services } from '@/components/sections/Services';
 import { Gallery } from '@/components/sections/Gallery';
 import { StatsBand } from '@/components/sections/StatsBand';
 import { Reviews } from '@/components/sections/Reviews';
@@ -16,10 +17,11 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBar />
+      <Remodeling />
       <About />
       <WhyUs />
-      <Services />
       <Process />
+      <Services />
       <Gallery />
       <StatsBand />
       <Reviews />

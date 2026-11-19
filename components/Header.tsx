@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { site, services } from '@/lib/site';
+import { site, services, remodelingServices } from '@/lib/site';
 import { PhoneIcon, MenuIcon, CloseIcon, ArrowRightIcon, PinIcon } from './icons';
 
 const navLinks = [
@@ -79,11 +79,28 @@ export function Header() {
                   </svg>
                 </Link>
                 <div
-                  className={`absolute left-1/2 top-full w-64 -translate-x-1/2 pt-3 transition-all duration-200 ${
+                  className={`absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 transition-all duration-200 ${
                     servicesOpen ? 'visible opacity-100' : 'invisible opacity-0'
                   }`}
                 >
-                  <div className="overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-xl">
+                  <div className="max-h-[70vh] overflow-y-auto rounded-xl border border-gray-100 bg-white py-2 shadow-xl">
+                    <p className="px-4 pb-1 pt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-dark">
+                      Additions &amp; Remodeling
+                    </p>
+                    {remodelingServices.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href="/#remodeling"
+                        className="flex items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-charcoal transition-colors hover:bg-gold/10 hover:text-gold-dark"
+                      >
+                        {s.title}
+                        <ArrowRightIcon className="h-4 w-4 opacity-40" />
+                      </Link>
+                    ))}
+                    <div className="my-1 border-t border-gray-100" />
+                    <p className="px-4 pb-1 pt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                      Exterior
+                    </p>
                     {services.map((s) => (
                       <Link
                         key={s.slug}
@@ -163,6 +180,22 @@ export function Header() {
               </Link>
               {l.hasChildren && (
                 <div className="border-b border-gray-100 bg-gray-50 px-3 py-2">
+                  <p className="pt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-dark">
+                    Additions &amp; Remodeling
+                  </p>
+                  {remodelingServices.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href="/#remodeling"
+                      onClick={() => setOpen(false)}
+                      className="block py-2 text-sm font-medium text-gray-600 hover:text-gold-dark"
+                    >
+                      → {s.title}
+                    </Link>
+                  ))}
+                  <p className="pt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                    Exterior
+                  </p>
                   {services.map((s) => (
                     <Link
                       key={s.slug}

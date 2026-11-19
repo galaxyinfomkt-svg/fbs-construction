@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { services } from '@/lib/site';
+import { services, site } from '@/lib/site';
 import { serviceIconMap, CheckIcon, ArrowRightIcon } from '../icons';
 import { Reveal } from '../Reveal';
 
@@ -9,11 +9,12 @@ export function Services() {
     <section id="services" className="bg-white py-24 lg:py-32">
       <div className="container-x">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Our Services</span>
-          <h2 className="section-title mt-4">Expert Exterior Solutions, Done Right</h2>
+          <span className="eyebrow">Exterior Services</span>
+          <h2 className="section-title mt-4">We Still Handle the Outside</h2>
           <p className="mt-5 text-lg text-gray-600">
-            From siding and windows to doors and custom decks, we deliver premium craftsmanship that
-            protects your home and elevates its value.
+            Siding, windows, doors and custom decks — the exterior work FBS has been doing for{' '}
+            {site.yearsExperience} years, and the natural companion to an addition, sunroom or
+            screen porch.
           </p>
         </Reveal>
 
@@ -80,10 +81,10 @@ export function Services() {
         </div>
 
         <p className="mt-12 text-center text-gray-600">
-          Need something more? We also handle full{' '}
-          <span className="font-semibold text-charcoal">exterior renovations &amp; remodeling</span>.{' '}
-          <Link href="/contact" className="font-semibold text-gold-dark underline-offset-4 hover:underline">
-            Tell us about your project →
+          Looking to add square footage instead? See our{' '}
+          <span className="font-semibold text-charcoal">additions &amp; remodeling</span> work.{' '}
+          <Link href="/#remodeling" className="font-semibold text-gold-dark underline-offset-4 hover:underline">
+            Additions, kitchens, baths &amp; basements →
           </Link>
         </p>
       </div>

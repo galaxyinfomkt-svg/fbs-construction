@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { site, services, cities } from '@/lib/site';
+import { site, services, cities, remodelingServices } from '@/lib/site';
 import { PhoneIcon, MailIcon, PinIcon } from '../icons';
 
 const year = 2026;
@@ -8,7 +8,7 @@ const year = 2026;
 export function Footer() {
   return (
     <footer className="bg-charcoal text-white/70">
-      <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-1">
           <Link
             href="/#home"
@@ -24,8 +24,17 @@ export function Footer() {
             />
           </Link>
           <p className="mt-5 max-w-xs text-sm leading-relaxed">
-            Premium home exterior solutions — siding, windows, doors and custom decks — for
-            Massachusetts &amp; New England homeowners since {site.founded}.
+            Home additions and remodeling for Worcester County, Massachusetts — building out of
+            Whitinsville since {site.founded}.
+          </p>
+          <p className="mt-4 text-xs font-semibold leading-relaxed text-white/90">
+            {site.licenses.cslLabel}
+            <br />
+            {site.licenses.csl}
+            <br />
+            <span className="mt-1 inline-block">
+              {site.licenses.hicLabel} {site.licenses.hic}
+            </span>
           </p>
           <div className="mt-5 flex gap-3">
             <Social href={site.social.facebook} label="Facebook">
@@ -41,7 +50,22 @@ export function Footer() {
 
         <div>
           <h3 className="font-display text-base font-bold uppercase tracking-wide text-white">
-            Services
+            Additions &amp; Remodeling
+          </h3>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            {remodelingServices.map((s) => (
+              <li key={s.slug}>
+                <Link href="/#remodeling" className="transition-colors hover:text-gold">
+                  {s.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-base font-bold uppercase tracking-wide text-white">
+            Exterior
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {services.map((s) => (
@@ -51,11 +75,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href="/contact" className="transition-colors hover:text-gold">
-                Exterior Renovations
-              </Link>
-            </li>
           </ul>
         </div>
 
@@ -127,7 +146,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs sm:flex-row">
           <p>
-            © {year} {site.name}. All rights reserved. Licensed, bonded &amp; insured.
+            © {year} {site.name}. All rights reserved. {site.licenses.combined} · Fully insured.
           </p>
           <p>
             Website by{' '}

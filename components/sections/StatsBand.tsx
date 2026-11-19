@@ -3,7 +3,7 @@ import { Counter } from '../Counter';
 
 const stats = [
   { value: 15, suffix: '+', label: 'Years of Experience' },
-  { value: 1000, suffix: '+', label: 'Projects Completed' },
+  { value: 8, suffix: '', label: 'Worcester County Towns' },
   { value: 6, suffix: '', label: 'New England States Served' },
   { value: 100, suffix: '%', label: 'Satisfaction Guarantee' },
 ];

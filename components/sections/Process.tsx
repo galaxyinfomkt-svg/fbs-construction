@@ -6,23 +6,23 @@ import { PhoneIcon, ArrowRightIcon } from '../icons';
 const steps = [
   {
     n: '01',
-    title: 'Free Consultation',
-    text: 'Call or request a quote online. We listen to your goals and schedule a visit at your convenience.',
+    title: 'Walkthrough',
+    text: 'We come to the house, look at the space with you and say honestly what is possible — and what it will take to get there.',
   },
   {
     n: '02',
-    title: 'Detailed Estimate',
-    text: 'We assess your home and provide a clear, transparent, no-obligation estimate — no surprises.',
+    title: 'Written Estimate',
+    text: 'An itemized price with the scope spelled out in writing. No placeholder numbers, no obligation, no pressure.',
   },
   {
     n: '03',
-    title: 'Expert Installation',
-    text: 'Our skilled crew gets to work with premium materials, on schedule and respectful of your space.',
+    title: 'Permits & Build',
+    text: 'We pull the building permit, schedule the inspections and build it — structure closed in weather-tight before any interior finishing starts.',
   },
   {
     n: '04',
     title: 'Final Walkthrough',
-    text: 'We review everything together to make sure it’s flawless — guaranteed 100% satisfaction.',
+    text: 'We go through the finished work together and fix anything that is not right before we call it done.',
   },
 ];
 

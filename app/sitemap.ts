@@ -3,9 +3,11 @@ import { site, services, cities } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date('2026-06-16');
+  // Home was rewritten for the Home Additions & Remodeling repositioning.
+  const homeModified = new Date('2026-11-19');
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: site.url, lastModified, changeFrequency: 'monthly', priority: 1 },
+    { url: site.url, lastModified: homeModified, changeFrequency: 'monthly', priority: 1 },
     { url: `${site.url}/services`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${site.url}/service-areas`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/about`, lastModified, changeFrequency: 'yearly', priority: 0.7 },
@@ -20,13 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const cityRoutes: MetadataRoute.Sitemap = cities.map((c) => ({
-    url: `${site.url}/service-areas/${c.slug}`,
-    lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
+  // NOTE: there is deliberately no /service-areas/<city> route in the app —
+  // the city landing pages were removed in commit bd9367d. They were still
+  // being listed here, so the sitemap was advertising 8 URLs that return 404.
   const cityServiceRoutes: MetadataRoute.Sitemap = cities.flatMap((c) =>
     services.map((s) => ({
       url: `${site.url}/service-areas/${c.slug}/${s.slug}`,
@@ -36,5 +34,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...staticRoutes, ...serviceRoutes, ...cityRoutes, ...cityServiceRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...cityServiceRoutes];
 }

@@ -138,3 +138,100 @@ export const serviceIconMap = {
   door: DoorIcon,
   deck: DeckIcon,
 } as const;
+
+// Remodeling & addition service icons
+export function AdditionIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 21V11l6-4 6 4v10" />
+      <path d="M3 21h18" />
+      <path d="M15 21V6h6v15" />
+      <path d="M18 10v5M15.5 12.5h5" />
+    </svg>
+  );
+}
+
+export function InteriorIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 21V5l9-3 9 3v16" />
+      <path d="M3 21h18" />
+      <path d="M12 21v-7h5v7" />
+      <path d="M7 10h3" />
+    </svg>
+  );
+}
+
+export function KitchenIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="3" width="18" height="7" rx="1" />
+      <rect x="3" y="14" width="18" height="7" rx="1" />
+      <path d="M8 3v7M8 14v7M16 17.5h3" />
+    </svg>
+  );
+}
+
+export function BathIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3Z" />
+      <path d="M6 12V6a2 2 0 0 1 2-2h1" />
+      <path d="M11 6h2" />
+      <path d="M7 19l-1 2M17 19l1 2" />
+    </svg>
+  );
+}
+
+export function BasementIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 10l9-6 9 6" />
+      <path d="M5 10v4h14v-4" />
+      <rect x="3" y="14" width="18" height="7" rx="1" />
+      <path d="M9 17.5h6" />
+    </svg>
+  );
+}
+
+export function SunroomIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 9l9-5 9 5" />
+      <rect x="5" y="9" width="14" height="12" rx="1" />
+      <path d="M12 9v12M5 15h14" />
+    </svg>
+  );
+}
+
+export function PorchIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M2 9l10-6 10 6" />
+      <path d="M5 9v12M19 9v12M2 21h20" />
+      <path d="M9 13h6M9 17h6M12 13v8" />
+    </svg>
+  );
+}
+
+export function DeckRoofIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M2 8l10-5 10 5" />
+      <path d="M5 8v4M19 8v4" />
+      <path d="M3 14h18M3 18h18" />
+      <path d="M6 18v3M18 18v3" />
+    </svg>
+  );
+}
+
+export const remodelingIconMap = {
+  addition: AdditionIcon,
+  interior: InteriorIcon,
+  kitchen: KitchenIcon,
+  bath: BathIcon,
+  basement: BasementIcon,
+  sunroom: SunroomIcon,
+  porch: PorchIcon,
+  deckRoof: DeckRoofIcon,
+} as const;

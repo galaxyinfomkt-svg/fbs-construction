@@ -1,10 +1,11 @@
+import { site } from '@/lib/site';
 import { ShieldIcon, CheckIcon, StarIcon, ClockIcon } from '../icons';
 
 const items = [
-  { icon: ShieldIcon, label: 'Licensed, Bonded & Insured' },
-  { icon: CheckIcon, label: '1000+ Projects Completed' },
+  { icon: ShieldIcon, label: `MA CSL ${site.licenses.csl}` },
+  { icon: CheckIcon, label: `HIC Reg. ${site.licenses.hic}` },
   { icon: StarIcon, label: '5-Star Google Rating' },
-  { icon: ClockIcon, label: 'On-Time, On-Budget' },
+  { icon: ClockIcon, label: 'Permits & Inspections Handled' },
 ];
 
 export function TrustBar() {

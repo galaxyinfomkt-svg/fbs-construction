@@ -5,10 +5,10 @@ import { Reveal } from '../Reveal';
 import { Zoomable } from '../Zoomable';
 
 const points = [
-  'Premium materials with manufacturer warranties',
-  'Professional, background-checked installation teams',
-  'Clear communication and on-time delivery',
-  'Energy efficiency & lasting property value',
+  'Licensed Construction Supervisor on every build',
+  'Permits pulled and inspections scheduled by us',
+  'One crew, one point of contact, start to finish',
+  'Interior work that keeps going all winter',
 ];
 
 export function About() {
@@ -38,17 +38,22 @@ export function About() {
         <Reveal variant="right">
           <span className="eyebrow">About FBS Construction</span>
           <h2 className="section-title mt-4">
-            New England&apos;s Trusted Exterior Renovation Experts
+            A Worcester County Builder, Not a Sales Office
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-gray-600">
-            With over 15 years of experience, FBS Construction Inc has been the premier choice for
-            home exterior renovations across Massachusetts and New England. We combine exceptional
-            craftsmanship with outstanding customer service on every project — big or small.
+            FBS Construction Inc has been building and renovating homes out of Whitinsville,
+            Massachusetts for over {site.yearsExperience.replace('+', '')} years. What started as
+            exterior work has grown into what we are known for now: additions that add real square
+            footage, and interior renovations that make a house work for the family living in it.
           </p>
           <p className="mt-4 leading-relaxed text-gray-600">
-            As a licensed, bonded and fully insured contractor, we stand behind our work with a 100%
-            satisfaction guarantee. From your free estimate to the final walkthrough, you&apos;ll
-            work with a team that treats your home like its own.
+            We hold Massachusetts Construction Supervisor License{' '}
+            <strong className="font-semibold text-charcoal">{site.licenses.csl}</strong> and Home
+            Improvement Contractor registration{' '}
+            <strong className="font-semibold text-charcoal">{site.licenses.hic}</strong>, and we are
+            fully insured. That matters on an addition: the CSL is what Massachusetts requires to
+            supervise structural work, and the HIC registration is what protects you on the
+            contract.
           </p>
 
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">

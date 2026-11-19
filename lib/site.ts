@@ -4,14 +4,22 @@ export const site = {
   name: 'FBS Construction Inc',
   legalName: 'FBS Construction Inc',
   shortName: 'FBS Construction',
-  tagline: 'Premium Home Exterior Solutions',
+  tagline: 'Home Additions & Remodeling',
   description:
-    'Top-rated home exterior contractor in Massachusetts & New England. Expert siding installation, window replacement, door installation and custom deck construction with 15+ years of experience.',
+    'Licensed home addition and remodeling contractor in Whitinsville, MA. Second-story additions, in-law suites, kitchen and bathroom remodeling, basement finishing, sunrooms and screen porches across Worcester County. MA CSL CS-117744 · HIC 179686.',
   url: 'https://fbsconstructioninc.com',
   // Contact
   phone: '(774) 285-6562',
   phoneRaw: '+17742856562',
   email: 'fbsconstruction@hotmail.com',
+  // Massachusetts credentials — must appear in the footer and on the About page.
+  licenses: {
+    cslLabel: 'MA Construction Supervisor License',
+    csl: 'CS-117744',
+    hicLabel: 'MA Home Improvement Contractor',
+    hic: '179686',
+    combined: 'MA CSL CS-117744 · HIC 179686',
+  },
   // Address
   address: {
     city: 'Whitinsville',
@@ -64,13 +72,132 @@ export const site = {
     'Grafton',
     'Worcester',
   ],
+  // Only claims we can back up: years in business, towns served, licenses held.
   stats: [
-    { value: '15+', label: 'Years Experience' },
-    { value: '1000+', label: 'Projects Completed' },
-    { value: '5★', label: 'Google Rating' },
+    { value: '15+', label: 'Years in Business' },
+    { value: '8', label: 'Worcester County Towns' },
+    { value: '2', label: 'MA Licenses Held' },
     { value: '100%', label: 'Satisfaction Guarantee' },
   ],
 } as const;
+
+/**
+ * Priority services for the Home Additions & Remodeling repositioning.
+ * These do not have dedicated pages yet (they are scheduled for 24/11–08/12),
+ * so the home page cards point to /contact. No photos are listed here on
+ * purpose: FBS has no confirmed photo of kitchen, bathroom, basement, sunroom,
+ * screen porch or deck roof work, and stock photography must never be shown as
+ * if it were FBS work.
+ */
+export type RemodelingService = {
+  slug: string;
+  title: string;
+  short: string;
+  bullets: string[];
+  icon: 'addition' | 'interior' | 'kitchen' | 'bath' | 'basement' | 'sunroom' | 'porch' | 'deckRoof';
+};
+
+export const remodelingServices: RemodelingService[] = [
+  {
+    slug: 'home-additions',
+    title: 'Home Additions',
+    short:
+      'Second-story additions, bump-outs and in-law suites that add real square footage without moving.',
+    bullets: [
+      'Second-story & over-garage additions',
+      'In-law and primary suite additions',
+      'Full framing, roofing and tie-in',
+      'Permits and inspections handled',
+    ],
+    icon: 'addition',
+  },
+  {
+    slug: 'interior-remodeling',
+    title: 'Interior Remodeling',
+    short:
+      'Open up walls, reconfigure rooms and modernize finishes — interior work we run straight through winter.',
+    bullets: [
+      'Wall removal & open-concept layouts',
+      'Flooring, trim and finish carpentry',
+      'Drywall, paint and lighting',
+      'Whole-floor renovations',
+    ],
+    icon: 'interior',
+  },
+  {
+    slug: 'kitchen-remodeling',
+    title: 'Kitchen Remodeling',
+    short: 'Full kitchen renovations — cabinets, counters, islands and the layout behind them.',
+    bullets: [
+      'Cabinetry and countertop installation',
+      'Island and peninsula builds',
+      'Plumbing & electrical coordination',
+      'Backsplash, flooring and lighting',
+    ],
+    icon: 'kitchen',
+  },
+  {
+    slug: 'bathroom-remodeling',
+    title: 'Bathroom Remodeling',
+    short: 'Tub-to-shower conversions, full gut renovations and accessible bathroom upgrades.',
+    bullets: [
+      'Tub-to-shower conversions',
+      'Tile, vanity and fixture installation',
+      'Waterproofing done properly',
+      'Accessible & curbless designs',
+    ],
+    icon: 'bath',
+  },
+  {
+    slug: 'basement-finishing',
+    title: 'Basement Finishing',
+    short:
+      'Turn an unused basement into a family room, home office, gym or guest suite — with moisture handled first.',
+    bullets: [
+      'Moisture control & insulation first',
+      'Egress, ceiling height and code review',
+      'Framing, drywall and flooring',
+      'Basement baths and wet bars',
+    ],
+    icon: 'basement',
+  },
+  {
+    slug: 'sunrooms',
+    title: 'Sunrooms',
+    short: 'Three-season and year-round sunrooms that add bright, usable living space to the house.',
+    bullets: [
+      'Three-season & four-season builds',
+      'Insulated, heated year-round options',
+      'Foundation or existing-slab builds',
+      'Glass, screen and hybrid walls',
+    ],
+    icon: 'sunroom',
+  },
+  {
+    slug: 'screen-porches',
+    title: 'Screen Porches',
+    short: 'Screened porches that make the deck usable from spring through the first frost.',
+    bullets: [
+      'New screened porch construction',
+      'Existing deck conversions',
+      'Screen systems built to last',
+      'Ceiling fans, lighting and flooring',
+    ],
+    icon: 'porch',
+  },
+  {
+    slug: 'deck-roofs',
+    title: 'Deck Roofs',
+    short: 'Covered roofs over existing or new decks — shade, rain protection and a dry grill.',
+    bullets: [
+      'Gable, shed and hip roof structures',
+      'Engineered to tie into the house',
+      'Matching shingles and trim',
+      'Built over new or existing decks',
+    ],
+    icon: 'deckRoof',
+  },
+];
 
 export type ServiceItem = {
   slug: string;
@@ -402,34 +529,44 @@ export type Faq = { question: string; answer: string };
 
 export const faqs: Faq[] = [
   {
+    question: 'Does FBS Construction build home additions?',
+    answer:
+      'Yes. Home additions are our primary service. We build second-story and over-garage additions, rear and side bump-outs, in-law suites and primary suite additions — handling framing, roofing, the tie-in to the existing house, permits and inspections from start to finish.',
+  },
+  {
+    question: 'Is FBS Construction licensed in Massachusetts?',
+    answer:
+      'Yes. FBS Construction Inc holds Massachusetts Construction Supervisor License CS-117744 and Home Improvement Contractor registration 179686, and carries full liability insurance. The CSL is what Massachusetts requires for structural work such as additions, and the HIC registration is what protects you as a homeowner on residential remodeling contracts.',
+  },
+  {
     question: 'What areas does FBS Construction serve?',
     answer:
-      'FBS Construction Inc is based in Whitinsville, Massachusetts and serves homeowners across Massachusetts and throughout New England, including Rhode Island, Connecticut, New Hampshire, Vermont and Maine.',
+      'We are based in Whitinsville, Massachusetts and work throughout Worcester County — including Northbridge, Uxbridge, Sutton, Douglas, Millbury, Grafton and Worcester — plus surrounding towns in Massachusetts and New England.',
   },
   {
-    question: 'Is FBS Construction licensed and insured?',
+    question: 'Do you offer free estimates on additions and remodeling?',
     answer:
-      'Yes. FBS Construction Inc is a fully licensed, bonded and insured contractor. Every project is backed by our 100% satisfaction guarantee and manufacturer warranties on premium materials.',
+      'Yes — free and with no obligation. Call (774) 285-6562 or send your project details through the form and we will schedule a visit, walk the space with you and put a clear, itemized price in writing.',
   },
   {
-    question: 'Do you offer free estimates?',
+    question: 'Can you remodel in the winter in Massachusetts?',
     answer:
-      'Absolutely. We provide free, no-obligation estimates for all siding, window, door and deck projects. Call (774) 285-6562 or request a quote online and we’ll schedule a convenient time to assess your project.',
+      'Yes, and that is exactly when interior work makes the most sense. Kitchen and bathroom remodeling, basement finishing and interior renovations all happen inside the heated envelope of your home, so New England winter does not stop them. Additions are sequenced so the structure is closed in before interior finishing begins.',
   },
   {
-    question: 'What types of siding do you install?',
+    question: 'Do I need a building permit for a home addition?',
     answer:
-      'We install vinyl, fiber cement, wood and engineered wood siding, along with insulation upgrades and custom trim work, all backed by manufacturer warranties.',
+      'In Massachusetts, yes — an addition changes the structure and footprint of the house, so it requires a building permit from your town, and the work has to be supervised by a licensed Construction Supervisor. We pull the permits, schedule the inspections and keep the paperwork in order so you are not chasing town hall.',
   },
   {
-    question: 'How long does a typical exterior project take?',
+    question: 'How much does a home addition or remodel cost?',
     answer:
-      'Timelines vary by scope, but most siding, window and door projects are completed within a few days to a couple of weeks. We provide a clear schedule up front and pride ourselves on on-time delivery.',
+      'It depends on size, structural work, and the finishes you choose — a bathroom remodel and a second-story addition are very different projects. We do not quote blind over the phone. We look at your home, talk through what you actually want, and give you a detailed written estimate with no surprises.',
   },
   {
-    question: 'How much does siding or window replacement cost?',
+    question: 'Do you still do siding, windows, doors and decks?',
     answer:
-      'Every home is different, so pricing depends on materials, square footage and project scope. We provide transparent, detailed free estimates so you know exactly what to expect with no surprises.',
+      'Yes. Exterior work is still part of what we do — siding installation, window replacement, door installation and custom deck construction — and it pairs naturally with additions, sunrooms, screen porches and deck roofs.',
   },
 ];
 

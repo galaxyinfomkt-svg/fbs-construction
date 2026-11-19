@@ -5,7 +5,7 @@ import {
   ShieldIcon,
   CheckIcon,
   ClockIcon,
-  StarIcon,
+  AdditionIcon,
   DeckIcon,
   PhoneIcon,
   ArrowRightIcon,
@@ -14,33 +14,33 @@ import {
 const features = [
   {
     icon: ShieldIcon,
-    title: 'Licensed, Bonded & Insured',
-    text: 'Full protection and peace of mind on every project, backed by our 100% satisfaction guarantee.',
+    title: 'Licensed for Structural Work',
+    text: 'MA Construction Supervisor License CS-117744 and HIC registration 179686, plus full insurance — the credentials an addition legally requires.',
   },
   {
-    icon: StarIcon,
-    title: '5-Star Reputation',
-    text: 'Hundreds of happy New England homeowners and a perfect 5.0 Google rating earned the hard way.',
-  },
-  {
-    icon: DeckIcon,
-    title: 'Premium Materials',
-    text: 'Top-tier siding, windows, doors and decking with leading manufacturer warranties.',
+    icon: AdditionIcon,
+    title: 'Framing Done In-House',
+    text: 'Load-bearing changes, second-story framing and roof tie-ins are built by our own crew, not handed to whoever happens to be free.',
   },
   {
     icon: ClockIcon,
-    title: 'On-Time, On-Budget',
-    text: 'Clear schedules and transparent pricing — no surprises, no runaround, just results.',
+    title: 'Permits Without the Runaround',
+    text: 'We pull the building permit and schedule the inspections. You are not the one on hold with the town.',
   },
   {
     icon: CheckIcon,
-    title: 'Craftsmanship First',
-    text: 'Skilled, background-checked crews who treat your home like it’s their own, start to finish.',
+    title: 'One Crew, One Contact',
+    text: 'The people who price your project are the people who build it — through to the final walkthrough.',
+  },
+  {
+    icon: DeckIcon,
+    title: 'Exterior Experience Behind It',
+    text: 'Fifteen years of siding, roofing and window work means your addition gets closed in weather-tight the first time.',
   },
   {
     icon: PhoneIcon,
-    title: 'Responsive Service',
-    text: 'Real people who answer, show up and follow through — communication you can count on.',
+    title: 'Straight Answers',
+    text: 'Real people who pick up, show up when they said they would, and tell you what something actually costs.',
   },
 ];
 
@@ -51,7 +51,7 @@ export function WhyUs() {
       <div className="container-x relative">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Why FBS Construction</span>
-          <h2 className="section-title mt-4">Built on Trust, Backed by Results</h2>
+          <h2 className="section-title mt-4">The Part Most Contractors Get Wrong</h2>
           <p className="mt-5 text-lg text-gray-600">
             We&apos;re not the cheapest — we&apos;re the team you call when you want it done right the
             first time.

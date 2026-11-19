@@ -3,7 +3,7 @@ import { site } from '@/lib/site';
 import { HeroForm } from '../HeroForm';
 import { PhoneIcon, ArrowRightIcon, StarIcon, ShieldIcon, CheckIcon } from '../icons';
 
-const badges = ['Siding', 'Windows', 'Doors', 'Decks'];
+const badges = ['Home Additions', 'Interior Remodeling', 'Kitchens', 'Bathrooms'];
 
 export function Hero() {
   return (
@@ -26,7 +26,7 @@ export function Hero() {
         <div>
           <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 animate-fadeUp">
             <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-gold ring-1 ring-gold/30">
-              <ShieldIcon className="h-4 w-4" /> Licensed &amp; Insured
+              <ShieldIcon className="h-4 w-4" /> MA CSL {site.licenses.csl}
             </span>
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/90">
               <span className="flex text-gold">
@@ -42,9 +42,9 @@ export function Hero() {
             className="font-display text-[2.5rem] font-bold uppercase leading-[1.05] tracking-tight text-white animate-fadeUp sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '80ms' }}
           >
-            Premium Home
+            Home Additions
             <span className="mt-1 block bg-gradient-to-r from-gold via-gold-light to-gold-dark bg-clip-text text-transparent">
-              Exterior Solutions
+              &amp; Remodeling
             </span>
           </h1>
 
@@ -52,12 +52,12 @@ export function Hero() {
             className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 animate-fadeUp"
             style={{ animationDelay: '160ms' }}
           >
-            Expert <strong className="font-semibold text-white">siding</strong>,{' '}
-            <strong className="font-semibold text-white">window</strong>,{' '}
-            <strong className="font-semibold text-white">door</strong> &amp;{' '}
-            <strong className="font-semibold text-white">deck</strong> installation across
-            Massachusetts &amp; New England — backed by {site.yearsExperience} years of craftsmanship
-            and a 100% satisfaction guarantee.
+            Need more room without moving? We build{' '}
+            <strong className="font-semibold text-white">second-story additions</strong>,{' '}
+            <strong className="font-semibold text-white">in-law suites</strong> and full{' '}
+            <strong className="font-semibold text-white">kitchen, bathroom and basement</strong>{' '}
+            renovations for Worcester County homeowners — licensed, permitted, and running right
+            through the New England winter.
           </p>
 
           {/* Service pills */}
@@ -68,7 +68,7 @@ export function Hero() {
             {badges.map((b) => (
               <a
                 key={b}
-                href="#services"
+                href="#remodeling"
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-semibold text-white/90 backdrop-blur transition-all hover:border-gold/60 hover:bg-gold/10 hover:text-white"
               >
                 <CheckIcon className="h-3.5 w-3.5 text-gold" />

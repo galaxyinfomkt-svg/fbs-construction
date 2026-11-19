@@ -1,4 +1,4 @@
-import { site, services, reviews } from '@/lib/site';
+import { site, services, reviews, remodelingServices, cities } from '@/lib/site';
 
 const businessId = `${site.url}/#business`;
 
@@ -45,7 +45,44 @@ export function JsonLd() {
       opens: h.open,
       closes: h.close,
     })),
-    areaServed: site.serviceAreas.map((a) => ({ '@type': 'State', name: a })),
+    areaServed: [
+      ...cities.map((c) => ({ '@type': 'City', name: `${c.name}, MA` })),
+      ...site.serviceAreas.map((a) => ({ '@type': 'State', name: a })),
+    ],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'license',
+        name: site.licenses.cslLabel,
+        identifier: site.licenses.csl,
+        recognizedBy: {
+          '@type': 'GovernmentOrganization',
+          name: 'Commonwealth of Massachusetts — Board of Building Regulations and Standards',
+        },
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'registration',
+        name: site.licenses.hicLabel,
+        identifier: site.licenses.hic,
+        recognizedBy: {
+          '@type': 'GovernmentOrganization',
+          name: 'Commonwealth of Massachusetts — Office of Consumer Affairs and Business Regulation',
+        },
+      },
+    ],
+    knowsAbout: [
+      'Home additions',
+      'Second-story additions',
+      'In-law suite additions',
+      'Interior remodeling',
+      'Kitchen remodeling',
+      'Bathroom remodeling',
+      'Basement finishing',
+      'Sunrooms',
+      'Screen porches',
+      'Deck roofs',
+    ],
     sameAs: [site.social.facebook, site.social.instagram, site.social.google],
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -60,21 +97,37 @@ export function JsonLd() {
       reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: '5' },
       reviewBody: r.text,
     })),
-    makesOffer: services.map((s) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: s.title,
-        description: s.short,
-      },
-    })),
+    makesOffer: [
+      ...remodelingServices.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s.title, description: s.short },
+      })),
+      ...services.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s.title, description: s.short },
+      })),
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Home Exterior Services',
-      itemListElement: services.map((s) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: s.title, description: s.description },
-      })),
+      name: 'Home Additions & Remodeling Services',
+      itemListElement: [
+        {
+          '@type': 'OfferCatalog',
+          name: 'Additions & Remodeling',
+          itemListElement: remodelingServices.map((s) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: s.title, description: s.short },
+          })),
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Exterior',
+          itemListElement: services.map((s) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+          })),
+        },
+      ],
     },
   };
 
