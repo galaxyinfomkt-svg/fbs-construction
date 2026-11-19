@@ -11,7 +11,9 @@ export function LeadForm({ className }: { className?: string }) {
     <div className={className}>
       <iframe
         src={`https://api.leadconnectorhq.com/widget/form/${FORM_ID}`}
-        style={{ width: '100%', minHeight: 600, border: 'none', borderRadius: 8 }}
+        // The form renders ~662px tall (with the bot-protection block); at 600px the
+        // SEND button was clipped. 690 leaves room on narrow screens too.
+        style={{ width: '100%', minHeight: 690, border: 'none', borderRadius: 8 }}
         id={`inline-${FORM_ID}`}
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"

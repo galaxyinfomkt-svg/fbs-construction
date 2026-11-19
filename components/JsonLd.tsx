@@ -1,4 +1,4 @@
-import { site, services, reviews, remodelingServices, cities } from '@/lib/site';
+import { site, services, remodelingServices, cities } from '@/lib/site';
 
 const businessId = `${site.url}/#business`;
 
@@ -84,19 +84,11 @@ export function JsonLd() {
       'Deck roofs',
     ],
     sameAs: [site.social.facebook, site.social.instagram, site.social.google],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: site.rating.value,
-      reviewCount: site.rating.count,
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: reviews.slice(0, 4).map((r) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: r.name },
-      reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: '5' },
-      reviewBody: r.text,
-    })),
+    // aggregateRating / review removed (Nov 2026): the testimonials in lib/site.ts
+    // could not be traced to real customers, and self-served review markup on a
+    // LocalBusiness is not eligible for review snippets anyway. Marking up
+    // unverifiable reviews risks a manual action. Re-add only with real data
+    // pulled from the Google Business Profile.
     makesOffer: [
       ...remodelingServices.map((s) => ({
         '@type': 'Offer',

@@ -21,10 +21,23 @@ const config: Config = {
           DEFAULT: '#1a1a1a',
           light: '#2b2b2b',
         },
+        // Home redesign tokens (Nov 2026). One accent (brand gold), neutral greys.
+        ink: {
+          DEFAULT: '#121417',
+          soft: '#1c1f24',
+          muted: '#5b6068',
+        },
+        paper: '#f4f4f1',
+        line: '#e3e3de',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-oswald)', 'Impact', 'sans-serif'],
+        geist: ['var(--font-geist)', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        // Shape system for the home: cards and images 20px, buttons pill.
+        card: '20px',
       },
       boxShadow: {
         card: '0 10px 30px -10px rgba(0,0,0,0.25)',
