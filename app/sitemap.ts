@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { site, services, remodelingServices, cities } from '@/lib/site';
 import { allServices } from '@/lib/all-services';
+import { projects } from '@/lib/projects';
+import { blogPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date('2026-06-16');
@@ -13,8 +15,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/service-areas`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/about`, lastModified, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${site.url}/gallery`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${site.url}/projects`, lastModified: homeModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/blog`, lastModified: homeModified, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${site.url}/contact`, lastModified, changeFrequency: 'yearly', priority: 0.8 },
   ];
+
+  // Project case studies and blog posts, added 20/11/2026.
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
+    url: `${site.url}/projects/${p.slug}`,
+    lastModified: homeModified,
+    changeFrequency: 'yearly' as const,
+    priority: 0.6,
+  }));
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${site.url}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: 'yearly' as const,
+    priority: 0.6,
+  }));
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
     url: `${site.url}/services/${s.slug}`,
@@ -50,5 +69,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...staticRoutes, ...remodelingRoutes, ...serviceRoutes, ...cityRoutes, ...cityServiceRoutes];
+  return [
+    ...staticRoutes,
+    ...remodelingRoutes,
+    ...serviceRoutes,
+    ...projectRoutes,
+    ...blogRoutes,
+    ...cityRoutes,
+    ...cityServiceRoutes,
+  ];
 }
