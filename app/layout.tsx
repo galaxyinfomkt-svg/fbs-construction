@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import { Inter, Oswald } from 'next/font/google';
 import './globals.css';
 import { site } from '@/lib/site';
@@ -106,11 +105,11 @@ export default function RootLayout({
         <MobileCta />
         <JsonLd />
         {/* Bee Pro Hub External Tracking: page views + attribution */}
-        <Script
+        <script
           id="bph-external-tracking"
           src="https://link.msgsndr.com/js/external-tracking.js"
           data-tracking-id="tk_a9384347a0604263ae1eaa4ffe413bae"
-          strategy="afterInteractive"
+          defer
         />
       </body>
     </html>
