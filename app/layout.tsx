@@ -106,6 +106,13 @@ export default function RootLayout({
         <FloatingPhone />
         <MobileCta />
         <JsonLd />
+        {/* Bee Pro Hub External Tracking: page views + attribution */}
+        <script
+          id="bph-external-tracking"
+          src="https://link.msgsndr.com/js/external-tracking.js"
+          data-tracking-id="tk_a9384347a0604263ae1eaa4ffe413bae"
+          defer
+        />
       </body>
     </html>
   );
