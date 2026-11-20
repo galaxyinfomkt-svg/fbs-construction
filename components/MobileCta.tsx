@@ -16,7 +16,7 @@ export function MobileCta() {
         href="/contact"
         className="flex items-center justify-center gap-2 bg-gold py-3.5 text-sm font-bold uppercase tracking-wide text-charcoal"
       >
-        Free Estimate
+        Free Quote
         <ArrowRightIcon className="h-4 w-4" />
       </Link>
     </div>

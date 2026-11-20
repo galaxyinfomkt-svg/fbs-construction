@@ -150,7 +150,7 @@ export function Header() {
             {site.phone}
           </a>
           <Link href="/contact" className="btn-primary !px-5 !py-2.5">
-            Free Estimate
+            Free Quote
           </Link>
         </div>
 
@@ -226,7 +226,7 @@ export function Header() {
               {site.phone}
             </a>
             <Link href="/contact" className="btn-primary w-full" onClick={() => setOpen(false)}>
-              Get Free Estimate
+              Get a Free Quote
             </Link>
           </div>
         </nav>

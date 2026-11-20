@@ -18,9 +18,9 @@ export function WinterBand() {
             <div className="lg:col-span-4 lg:text-right">
               <a
                 href="#estimate"
-                className="inline-flex items-center justify-center rounded-full bg-ink px-7 py-4 text-base font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-full bg-ink px-10 py-5 text-lg font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
               >
-                Get a free estimate
+                Get a free quote
               </a>
             </div>
           </div>

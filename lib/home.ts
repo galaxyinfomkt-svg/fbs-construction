@@ -37,8 +37,29 @@ export const hero = {
     src: '/images/hero-front.webp',
     alt: 'Two-story colonial with navy siding, black shutters and attached garage built by FBS Construction',
   },
-  formTitle: 'Get a free estimate',
+  // Background slideshow: real FBS jobs only. `focus` is the object-position
+  // that keeps the house in frame on both wide and tall screens.
+  slides: [
+    { src: '/images/hero-front.webp', alt: 'Two-story colonial with navy siding and black shutters built by FBS Construction', focus: '50% 45%' },
+    { src: '/images/project-garage-navy.webp', alt: 'Navy home with three-bay garage and dormer by FBS Construction', focus: '45% 55%' },
+    { src: '/images/project-siding-gray-garage.webp', alt: 'Gray-sided three-story home with two-car garage by FBS Construction', focus: '50% 50%' },
+    { src: '/images/project-siding-navy-bay.webp', alt: 'Navy siding with bay window and white trim on an FBS project', focus: '50% 50%' },
+    { src: '/images/project-deck-white.webp', alt: 'White deck with railings on the back of a home by FBS Construction', focus: '40% 55%' },
+  ],
+  cta: 'Get a free quote',
+  formTitle: 'Get a free quote',
   formNote: 'Tell us about the project and we will call you to set up a visit.',
+};
+
+// Form section directly under the hero (the hero button scrolls here).
+export const quote = {
+  title: 'Get a free quote',
+  text: 'Tell us what you want to build. We call you back, set up a visit and put an itemized price in writing.',
+  steps: [
+    'Send the form or call us',
+    'We visit and measure the space',
+    'You get a written, itemized price',
+  ],
 };
 
 export const credentials = [

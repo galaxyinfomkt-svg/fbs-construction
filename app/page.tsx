@@ -13,6 +13,7 @@ import { ExteriorLinks } from '@/components/home/ExteriorLinks';
 import { AreasReviews } from '@/components/home/AreasReviews';
 import { FaqAccordion } from '@/components/home/FaqAccordion';
 import { FinalCta } from '@/components/home/FinalCta';
+import { QuoteSection } from '@/components/home/QuoteSection';
 
 // Home typeface. Scoped to the home for now; header, footer and inner pages
 // move to it as they are rebuilt.
@@ -92,6 +93,7 @@ export default function HomePage() {
   return (
     <div className={geist.variable}>
       <HomeHero />
+      <QuoteSection />
       <Credentials />
       <ServicesBento />
       <WhyAdd />

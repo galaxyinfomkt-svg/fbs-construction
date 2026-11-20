@@ -6,7 +6,11 @@ import Script from 'next/script';
 // client's own LeadConnector account — no API key and no inbox access needed.
 const FORM_ID = 'FWUxhWEUzaeQjirtGXmn';
 
-export function LeadForm({ className }: { className?: string }) {
+// `instance` keeps iframe ids unique when the form appears more than once on a
+// page (the home has one under the hero and one at the end); the embed script
+// resizes each iframe by its id.
+export function LeadForm({ className, instance }: { className?: string; instance?: string }) {
+  const iframeId = instance ? `inline-${FORM_ID}-${instance}` : `inline-${FORM_ID}`;
   return (
     <div className={className}>
       <iframe
@@ -14,7 +18,7 @@ export function LeadForm({ className }: { className?: string }) {
         // The form renders ~662px tall (with the bot-protection block); at 600px the
         // SEND button was clipped. 690 leaves room on narrow screens too.
         style={{ width: '100%', minHeight: 690, border: 'none', borderRadius: 8 }}
-        id={`inline-${FORM_ID}`}
+        id={iframeId}
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
         data-trigger-value=""
@@ -24,7 +28,7 @@ export function LeadForm({ className }: { className?: string }) {
         data-deactivation-value=""
         data-form-name="Form 0"
         data-height="443"
-        data-layout-iframe-id={`inline-${FORM_ID}`}
+        data-layout-iframe-id={iframeId}
         data-form-id={FORM_ID}
         title="Free Estimate Request Form"
       />
