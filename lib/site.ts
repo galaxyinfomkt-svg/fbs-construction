@@ -570,60 +570,7 @@ export const faqs: Faq[] = [
   },
 ];
 
-export type City = {
-  name: string;
-  slug: string;
-  blurb: string;
-};
-
-// Local cities/towns FBS Construction serves — each gets a landing page per service.
-export const cities: City[] = [
-  {
-    name: 'Whitinsville',
-    slug: 'whitinsville',
-    blurb:
-      'Our home base. FBS Construction has transformed homes throughout Whitinsville with premium siding, windows, doors and decks.',
-  },
-  {
-    name: 'Northbridge',
-    slug: 'northbridge',
-    blurb:
-      'Trusted exterior renovations across Northbridge — from historic homes to new construction, built to handle New England weather.',
-  },
-  {
-    name: 'Uxbridge',
-    slug: 'uxbridge',
-    blurb:
-      'Uxbridge homeowners count on FBS Construction for craftsmanship that protects and elevates their homes year after year.',
-  },
-  {
-    name: 'Sutton',
-    slug: 'sutton',
-    blurb:
-      'From siding to custom decks, we help Sutton families boost curb appeal, comfort and the value of their homes.',
-  },
-  {
-    name: 'Douglas',
-    slug: 'douglas',
-    blurb:
-      'Premium home exterior solutions for Douglas, MA — energy-efficient windows, durable siding and beautiful outdoor living spaces.',
-  },
-  {
-    name: 'Millbury',
-    slug: 'millbury',
-    blurb:
-      'Millbury homeowners trust FBS Construction for licensed, insured exterior work backed by a 100% satisfaction guarantee.',
-  },
-  {
-    name: 'Grafton',
-    slug: 'grafton',
-    blurb:
-      'Serving Grafton with expert siding, window, door and deck installation — quality craftsmanship and honest, transparent pricing.',
-  },
-  {
-    name: 'Worcester',
-    slug: 'worcester',
-    blurb:
-      'Worcester’s choice for home exterior renovations. We bring premium materials and skilled installation to every neighborhood.',
-  },
-];
+// Service area data lives in lib/cities.ts — 111 towns, each with its own
+// climate, housing stock, landmarks and permitting notes.
+export type { City } from './cities';
+export { cities, citySlugs, coreCities, getCity, nearbyCities, citiesByRegion } from './cities';

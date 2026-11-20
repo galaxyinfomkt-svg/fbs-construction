@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { site, services, cities, remodelingServices } from '@/lib/site';
+import { site, services, coreCities, remodelingServices } from '@/lib/site';
 import { PhoneIcon, MailIcon, PinIcon } from '../icons';
 
 const year = 2026;
@@ -130,10 +130,10 @@ export function Footer() {
             </Link>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
-            {cities.map((c) => (
+            {coreCities.map((c) => (
               <Link
                 key={c.slug}
-                href={`/service-areas/${c.slug}/${services[0].slug}`}
+                href={`/service-areas/${c.slug}`}
                 className="rounded-full bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-white/75 ring-1 ring-white/10 transition-colors hover:bg-gold hover:text-charcoal hover:ring-gold"
               >
                 {c.name}, MA
