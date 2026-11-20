@@ -17,22 +17,31 @@ export function PageHero({
 }: {
   title: string;
   subtitle?: string;
-  image: string;
+  /** Optional: the Additions & Remodeling pages have no photo of their own yet,
+   *  so they render the same hero on a plain charcoal field instead of stock. */
+  image?: string;
   imageAlt?: string;
   crumbs: Crumb[];
   showCtas?: boolean;
   showForm?: boolean;
 }) {
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
-      <Image
-        src={image}
-        alt={imageAlt || title}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+    <section className="relative overflow-hidden bg-charcoal pt-32 pb-16 md:pt-40 md:pb-20">
+      {image ? (
+        <Image
+          src={image}
+          alt={imageAlt || title}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      ) : (
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(1200px_500px_at_15%_-10%,rgba(226,186,56,0.18),transparent_60%)]"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/85 to-charcoal/60" />
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal to-transparent" />
 
@@ -93,6 +102,15 @@ export function PageHero({
                 {site.phone}
               </a>
             </div>
+          )}
+          {!image && (
+            <p
+              className="mt-6 flex items-center gap-2 text-sm text-white/70 animate-fadeUp"
+              style={{ animationDelay: '320ms' }}
+            >
+              <ShieldIcon className="h-4 w-4 text-gold" />
+              {site.licenses.combined} · Fully insured · {site.hoursLabel}
+            </p>
           )}
         </div>
 

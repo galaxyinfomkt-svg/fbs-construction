@@ -55,7 +55,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {remodelingServices.map((s) => (
               <li key={s.slug}>
-                <Link href="/#remodeling" className="transition-colors hover:text-gold">
+                <Link href={`/services/${s.slug}`} className="transition-colors hover:text-gold">
                   {s.title}
                 </Link>
               </li>

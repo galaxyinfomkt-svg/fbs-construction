@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { services, site } from '@/lib/site';
+import { services, remodelingServices, site } from '@/lib/site';
+import { remodelingPages } from '@/lib/remodeling-pages';
+import { RemodelingServicePage } from '@/components/RemodelingServicePage';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Lightbox } from '@/components/Lightbox';
@@ -12,11 +14,28 @@ import { serviceIconMap, CheckIcon, ArrowRightIcon, PhoneIcon } from '@/componen
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return [...services, ...remodelingServices].map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
+
+  // Additions & Remodeling pages: same URL pattern, no image to advertise.
+  const remodeling = remodelingServices.find((s) => s.slug === slug);
+  const remodelingContent = remodeling ? remodelingPages[remodeling.slug] : undefined;
+  if (remodeling && remodelingContent) {
+    return {
+      title: remodelingContent.metaTitle,
+      description: remodelingContent.metaDescription,
+      alternates: { canonical: `/services/${remodeling.slug}` },
+      openGraph: {
+        title: `${remodeling.title} | ${site.name}`,
+        description: remodelingContent.metaDescription,
+        url: `${site.url}/services/${remodeling.slug}`,
+      },
+    };
+  }
+
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
@@ -34,6 +53,54 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Params) {
   const { slug } = await params;
+
+  const remodeling = remodelingServices.find((s) => s.slug === slug);
+  const remodelingContent = remodeling ? remodelingPages[remodeling.slug] : undefined;
+  if (remodeling && remodelingContent) {
+    const remodelingJsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: remodeling.title,
+          description: remodelingContent.metaDescription,
+          url: `${site.url}/services/${remodeling.slug}`,
+          serviceType: remodeling.title,
+          provider: {
+            '@type': 'GeneralContractor',
+            name: site.name,
+            telephone: site.phoneRaw,
+            url: site.url,
+          },
+          areaServed: site.localTowns.map((t) => ({ '@type': 'City', name: `${t}, MA` })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: remodeling.title,
+              item: `${site.url}/services/${remodeling.slug}`,
+            },
+          ],
+        },
+      ],
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(remodelingJsonLd) }}
+        />
+        <RemodelingServicePage service={remodeling} content={remodelingContent} />
+      </>
+    );
+  }
+
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 

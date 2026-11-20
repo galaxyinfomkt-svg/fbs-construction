@@ -60,11 +60,11 @@ export function Remodeling() {
                 </ul>
 
                 <Link
-                  href="/contact"
+                  href={`/services/${s.slug}`}
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-wide text-charcoal transition-colors hover:text-gold-dark"
-                  aria-label={`Request a free estimate for ${s.title}`}
+                  aria-label={`${s.title} — see what the work involves`}
                 >
-                  Free Estimate
+                  Learn More
                   <ArrowRightIcon className="h-4 w-4" />
                 </Link>
               </Reveal>

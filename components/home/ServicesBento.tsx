@@ -46,8 +46,8 @@ export function ServicesBento() {
             return (
               <Rise as="li" key={s.slug} delay={i * 0.04} className={`relative isolate overflow-hidden rounded-card ${cellClass[s.slug]}`}>
                 <a
-                  href="#estimate"
-                  aria-label={`Request a free estimate for ${s.title}`}
+                  href={`/services/${s.slug}`}
+                  aria-label={`${s.title} — see what the work involves`}
                   className="group flex h-full flex-col p-7 outline-none focus-visible:ring-4 focus-visible:ring-gold/50"
                 >
                   {feature && (

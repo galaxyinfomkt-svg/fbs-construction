@@ -93,7 +93,7 @@ export function Header() {
                     {remodelingServices.map((s) => (
                       <Link
                         key={s.slug}
-                        href="/#remodeling"
+                        href={`/services/${s.slug}`}
                         className="flex items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-charcoal transition-colors hover:bg-gold/10 hover:text-gold-dark"
                       >
                         {s.title}
@@ -189,7 +189,7 @@ export function Header() {
                   {remodelingServices.map((s) => (
                     <Link
                       key={s.slug}
-                      href="/#remodeling"
+                      href={`/services/${s.slug}`}
                       onClick={() => setOpen(false)}
                       className="block py-2 text-sm font-medium text-gray-600 hover:text-gold-dark"
                     >

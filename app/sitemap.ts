@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { site, services, cities } from '@/lib/site';
+import { site, services, remodelingServices, cities } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date('2026-06-16');
@@ -22,6 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // The eight Additions & Remodeling pages — the repositioning the whole site
+  // is built around, so they carry the higher priority.
+  const remodelingRoutes: MetadataRoute.Sitemap = remodelingServices.map((s) => ({
+    url: `${site.url}/services/${s.slug}`,
+    lastModified: homeModified,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }));
+
   // NOTE: there is deliberately no /service-areas/<city> route in the app —
   // the city landing pages were removed in commit bd9367d. They were still
   // being listed here, so the sitemap was advertising 8 URLs that return 404.
@@ -34,5 +43,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...staticRoutes, ...serviceRoutes, ...cityServiceRoutes];
+  return [...staticRoutes, ...remodelingRoutes, ...serviceRoutes, ...cityServiceRoutes];
 }
