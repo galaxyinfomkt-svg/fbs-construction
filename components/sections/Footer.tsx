@@ -13,10 +13,10 @@ export function Footer() {
           <Link
             href="/#home"
             aria-label={`${site.name} — back to top of home`}
-            className="inline-flex rounded-lg bg-white/95 px-2 py-1 transition-transform duration-300 hover:scale-105"
+            className="inline-flex px-2 py-1 transition-transform duration-300 hover:scale-105"
           >
             <Image
-              src="/images/logo.webp"
+              src="/images/logo-dark.webp"
               alt={`${site.name} logo`}
               width={150}
               height={100}

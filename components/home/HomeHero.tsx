@@ -113,12 +113,9 @@ export function HomeHero() {
           id="estimate"
           className="scroll-mt-32 lg:col-span-5"
         >
-          {/* No card: the heading and the form sit straight on the photo. */}
+          {/* No card and no heading: the form sits straight on the photo. */}
           <div className="text-white">
-            <h2 className="text-2xl font-semibold tracking-tight [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
-              {hero.formTitle}
-            </h2>
-            <p className="mt-1.5 text-[0.95rem] leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
+            <p className="text-[0.95rem] leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
               {hero.formNote}
             </p>
             <LeadForm className="mt-4" />

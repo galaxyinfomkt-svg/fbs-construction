@@ -46,9 +46,12 @@ export function Header() {
     >
       <div className="container-x flex h-[4.5rem] items-center justify-between lg:h-20">
         <Link href="/#home" className="flex items-center" aria-label={`${site.name} — back to top of home`}>
-          <span className={`flex items-center rounded-lg px-2 py-1 transition-colors ${solid ? '' : 'bg-white/95'}`}>
+          {/* No chip behind the logo. Over the photo the letters need their
+              counters filled white (logo-dark); on the white header the plain
+              logo is the right one. */}
+          <span className="flex items-center px-2 py-1">
             <Image
-              src="/images/logo.webp"
+              src={solid ? '/images/logo.webp' : '/images/logo-dark.webp'}
               alt={`${site.name} logo`}
               width={160}
               height={107}
