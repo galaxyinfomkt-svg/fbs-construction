@@ -10,7 +10,7 @@
 
 import type { City } from './cities';
 import { nearbyCities } from './cities';
-import type { ServiceItem } from './site';
+import type { LocalService } from './all-services';
 import { site } from './site';
 import { hash, pick, pickMany, shuffle, flag, openingAngle, sectionOrder, sectionTitle, ctaLine, CITY_HEADLINE_SHAPES, HEADLINE_SHAPES } from './variation';
 
@@ -25,13 +25,13 @@ const and = (items: string[]) =>
  * Within one town the opening angle is forced to rotate across services, so
  * the twelve pages for a single town do not all lead with the same fact.
  */
-function angleFor(city: City, service?: ServiceItem, serviceIndex = 0): ReturnType<typeof openingAngle> {
+function angleFor(city: City, service?: LocalService, serviceIndex = 0): ReturnType<typeof openingAngle> {
   if (!service) return openingAngle(city.slug, 'city', 'open');
   const angles = ['climate', 'housing-stock', 'landmarks', 'permits', 'distance'] as const;
   return angles[(hash(city.slug) + serviceIndex) % angles.length];
 }
 
-function openingParagraph(city: City, service?: ServiceItem, serviceIndex = 0): string {
+function openingParagraph(city: City, service?: LocalService, serviceIndex = 0): string {
   const keys = [city.slug, service?.slug ?? 'city', 'open'];
   const angle = angleFor(city, service, serviceIndex);
   const what = service ? service.title.toLowerCase() : 'additions and remodeling';
@@ -89,7 +89,7 @@ function openingParagraph(city: City, service?: ServiceItem, serviceIndex = 0): 
 
 /* ─────────── Supporting paragraphs ─────────── */
 
-function craftParagraph(city: City, service?: ServiceItem): string {
+function craftParagraph(city: City, service?: LocalService): string {
   const keys = [city.slug, service?.slug ?? 'city', 'craft'];
   const what = service ? service.title.toLowerCase() : 'an addition or a full remodel';
 
@@ -135,7 +135,7 @@ function craftParagraph(city: City, service?: ServiceItem): string {
   );
 }
 
-function trustParagraph(city: City, service?: ServiceItem): string {
+function trustParagraph(city: City, service?: LocalService): string {
   const keys = [city.slug, service?.slug ?? 'city', 'trust'];
   return pick(
     [
@@ -149,7 +149,7 @@ function trustParagraph(city: City, service?: ServiceItem): string {
 
 /* ─────────── Why this town ─────────── */
 
-function whyPoints(city: City, service?: ServiceItem): { title: string; body: string }[] {
+function whyPoints(city: City, service?: LocalService): { title: string; body: string }[] {
   const keys = [city.slug, service?.slug ?? 'city', 'why'];
 
   // On a service page, most of this block comes from the service's own
@@ -220,7 +220,7 @@ function whyPoints(city: City, service?: ServiceItem): { title: string; body: st
 
 /* ─────────── Local FAQ ─────────── */
 
-function localFaq(city: City, service?: ServiceItem): { question: string; answer: string }[] {
+function localFaq(city: City, service?: LocalService): { question: string; answer: string }[] {
   const keys = [city.slug, service?.slug ?? 'city', 'faq'];
   const what = service ? service.title.toLowerCase() : 'a home addition or remodel';
 
@@ -301,7 +301,7 @@ export type LocalPage = {
   bullets: string[];
 };
 
-export function buildCityPage(city: City, serviceList: ServiceItem[]): LocalPage {
+export function buildCityPage(city: City, serviceList: LocalService[]): LocalPage {
   const keys = [city.slug, 'city'];
   const shape = pick(CITY_HEADLINE_SHAPES, ...keys, 'headline');
 
@@ -335,7 +335,7 @@ export function buildCityPage(city: City, serviceList: ServiceItem[]): LocalPage
   };
 }
 
-export function buildCityServicePage(city: City, service: ServiceItem, serviceIndex = 0): LocalPage {
+export function buildCityServicePage(city: City, service: LocalService, serviceIndex = 0): LocalPage {
   const keys = [city.slug, service.slug];
   const shape = pick(HEADLINE_SHAPES, ...keys, 'headline');
 

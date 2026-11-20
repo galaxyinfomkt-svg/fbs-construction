@@ -3,14 +3,22 @@ import { site } from '@/lib/site';
 import { quote } from '@/lib/home';
 import { LeadForm } from '@/components/LeadForm';
 
+type QuoteSectionProps = {
+  /** City and service pages pass their own heading and lead-in. */
+  title?: string;
+  text?: string;
+  /** Each page needs its own iframe id when the form appears more than once. */
+  instance?: string;
+};
+
 // The form, directly under the hero. The hero's main button scrolls here.
-export function QuoteSection() {
+export function QuoteSection({ title, text, instance = 'top' }: QuoteSectionProps = {}) {
   return (
     <section id="estimate" className="scroll-mt-28 bg-ink pb-20 font-geist text-white sm:pb-28">
       <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5 lg:pt-6">
-          <h2 className="text-4xl font-semibold leading-[1.06] tracking-[-0.035em] sm:text-5xl">{quote.title}</h2>
-          <p className="mt-5 max-w-[46ch] text-lg leading-relaxed text-white/70">{quote.text}</p>
+          <h2 className="text-4xl font-semibold leading-[1.06] tracking-[-0.035em] sm:text-5xl">{title ?? quote.title}</h2>
+          <p className="mt-5 max-w-[46ch] text-lg leading-relaxed text-white/70">{text ?? quote.text}</p>
           <ol className="mt-9 space-y-4">
             {quote.steps.map((s) => (
               <li key={s} className="flex items-center gap-3 text-[1.05rem] text-white/90">
@@ -31,7 +39,7 @@ export function QuoteSection() {
         </div>
         <div className="lg:col-span-7">
           <div className="mx-auto max-w-[36rem] rounded-card bg-white p-4 text-ink shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] sm:p-6">
-            <LeadForm instance="top" />
+            <LeadForm instance={instance} />
           </div>
         </div>
       </div>

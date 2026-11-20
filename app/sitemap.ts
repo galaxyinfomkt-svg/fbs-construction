@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site, services, remodelingServices, cities } from '@/lib/site';
+import { allServices } from '@/lib/all-services';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date('2026-06-16');
@@ -31,17 +32,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // NOTE: there is deliberately no /service-areas/<city> route in the app —
-  // the city landing pages were removed in commit bd9367d. They were still
-  // being listed here, so the sitemap was advertising 8 URLs that return 404.
+  // City landing pages are back as of 20/11/2026 — one per town, each with its
+  // own local content rather than the same page with the name swapped.
+  const cityRoutes: MetadataRoute.Sitemap = cities.map((c) => ({
+    url: `${site.url}/service-areas/${c.slug}`,
+    lastModified: homeModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   const cityServiceRoutes: MetadataRoute.Sitemap = cities.flatMap((c) =>
-    services.map((s) => ({
+    allServices.map((s) => ({
       url: `${site.url}/service-areas/${c.slug}/${s.slug}`,
-      lastModified,
+      lastModified: homeModified,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),
   );
 
-  return [...staticRoutes, ...remodelingRoutes, ...serviceRoutes, ...cityServiceRoutes];
+  return [...staticRoutes, ...remodelingRoutes, ...serviceRoutes, ...cityRoutes, ...cityServiceRoutes];
 }

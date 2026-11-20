@@ -23,17 +23,33 @@ const SLIDE_MS = 6500;
  * The headline words rise into place; they are never hidden (no opacity 0,
  * no blur), so the H1 is readable in the server HTML and before hydration.
  */
-export function HomeHero() {
+type HomeHeroProps = {
+  /** City and service pages reuse this hero with their own words. */
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  cta?: string;
+  /** Set false on inner pages so the home page keeps the only H1 that matters. */
+  ariaLabel?: string;
+};
+
+export function HomeHero({ eyebrow, title, subtitle, cta, ariaLabel }: HomeHeroProps = {}) {
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const slides = hero.slides;
+  const copy = {
+    eyebrow: eyebrow ?? hero.eyebrow,
+    title: title ?? hero.title,
+    subtitle: subtitle ?? hero.subtitle,
+    cta: cta ?? hero.cta,
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setIndex((i) => (i + 1) % slides.length), SLIDE_MS);
     return () => clearTimeout(t);
   }, [index, slides.length]);
 
-  const words = hero.title.split(' ');
+  const words = copy.title.split(' ');
   // Always the same props on server and client: a conditional on `reduce`
   // here left the server's starting style stuck on screen once hydration
   // decided not to animate. A short rise in place is fine for everyone; under
@@ -49,7 +65,7 @@ export function HomeHero() {
   return (
     <section
       id="home"
-      aria-label="FBS Construction home additions and remodeling"
+      aria-label={ariaLabel ?? 'FBS Construction home additions and remodeling'}
       className="relative isolate flex min-h-[100dvh] items-center justify-center overflow-hidden bg-ink font-geist text-white"
     >
       {/* Slideshow */}
@@ -97,7 +113,7 @@ export function HomeHero() {
           {...rise(0)}
           className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-gold ring-1 ring-white/15 backdrop-blur-md"
         >
-          {hero.eyebrow}
+          {copy.eyebrow}
         </motion.p>
 
         <h1 className="mt-7 max-w-[15ch] text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] [text-shadow:0_2px_30px_rgba(0,0,0,0.35)] sm:max-w-[16ch] sm:text-7xl lg:text-[5.5rem]">
@@ -113,7 +129,7 @@ export function HomeHero() {
           {...rise(0.12 + words.length * 0.06)}
           className="mt-7 max-w-[40rem] text-lg leading-relaxed text-white/85 [text-shadow:0_1px_16px_rgba(0,0,0,0.6)] sm:text-xl"
         >
-          {hero.subtitle}
+          {copy.subtitle}
         </motion.p>
 
         <motion.div
@@ -124,7 +140,7 @@ export function HomeHero() {
             href="#estimate"
             className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gold px-10 py-5 text-lg font-semibold text-ink shadow-[0_18px_50px_-18px_rgba(225,187,55,0.75)] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-gold-light active:scale-[0.98] sm:w-auto"
           >
-            {hero.cta}
+            {copy.cta}
             <ArrowDownIcon aria-hidden weight="bold" className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-0.5" />
           </a>
           <a

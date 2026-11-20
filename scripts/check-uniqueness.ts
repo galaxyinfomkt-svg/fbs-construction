@@ -10,7 +10,7 @@
  */
 
 import { cities } from '../lib/cities.ts';
-import { services } from '../lib/site.ts';
+import { allServices as services } from '../lib/all-services.ts';
 import { buildCityPage, buildCityServicePage, pageText } from '../lib/local-copy.ts';
 
 function shingles(text: string): Set<string> {
