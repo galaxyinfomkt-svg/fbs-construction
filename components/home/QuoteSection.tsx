@@ -38,7 +38,7 @@ export function QuoteSection({ title, text, instance = 'top' }: QuoteSectionProp
           </a>
         </div>
         <div className="lg:col-span-7">
-          <div className="mx-auto max-w-[36rem] rounded-card bg-white p-4 text-ink shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] sm:p-6">
+          <div className="mx-auto max-w-[36rem]">
             <LeadForm instance={instance} />
           </div>
         </div>

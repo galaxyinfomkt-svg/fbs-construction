@@ -15,9 +15,10 @@ export function LeadForm({ className, instance }: { className?: string; instance
     <div className={className}>
       <iframe
         src={`https://api.leadconnectorhq.com/widget/form/${FORM_ID}`}
-        // The form renders ~662px tall (with the bot-protection block); at 600px the
-        // SEND button was clipped. 690 leaves room on narrow screens too.
-        style={{ width: '100%', minHeight: 690, border: 'none', borderRadius: 8 }}
+        // The embed script resizes the iframe to the form's real height once it loads
+        // (checked: 702px desktop / 727px phone with the bot check). 480 is only the placeholder.
+        style={{ width: '100%', minHeight: 480, border: 'none', borderRadius: 8, background: 'transparent' }}
+        allowTransparency
         id={iframeId}
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"

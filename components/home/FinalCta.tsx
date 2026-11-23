@@ -50,7 +50,7 @@ export function FinalCta() {
           </dl>
         </div>
         <div className="lg:col-span-7">
-          <div className="mx-auto max-w-[36rem] rounded-card bg-white p-4 text-ink sm:p-6">
+          <div className="mx-auto max-w-[36rem]">
             <LeadForm instance="bottom" />
           </div>
         </div>
