@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { remodelingServices, site, type RemodelingService } from '@/lib/site';
 import type { RemodelingPage } from '@/lib/remodeling-pages';
 import { PageHero } from '@/components/PageHero';
@@ -6,14 +7,20 @@ import { Reveal } from '@/components/Reveal';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { remodelingIconMap, CheckIcon, ArrowRightIcon, PhoneIcon } from '@/components/icons';
 
+/** Label shown on each job photo. */
+const stageLabel = { before: 'Before', during: 'During', after: 'After' } as const;
+
 /**
  * Detail page for the Additions & Remodeling services.
  *
- * Same sections and spacing as the exterior service pages, minus everything
- * that needs a photo: FBS has no confirmed images of kitchen, bath, basement,
- * sunroom, screen porch or deck-roof work, and stock photography is never
- * shown as if it were their work. So the hero runs on a plain charcoal field
- * and the "other services" cards are icon cards instead of photo cards.
+ * Same sections and spacing as the exterior service pages. The hero runs on a
+ * plain charcoal field and the "other services" cards are icon cards, because
+ * stock photography is never shown as if it were FBS's work.
+ *
+ * A page gets a photo gallery only once FBS has confirmed photos for it. As of
+ * 23/11/2026 that is Sunrooms and Deck Roofs; kitchen, bath, basement, interior
+ * remodeling, home additions and screen porches still have none, and those
+ * pages render exactly as before.
  */
 export function RemodelingServicePage({
   service,
@@ -88,6 +95,44 @@ export function RemodelingServicePage({
           </Reveal>
         </div>
       </section>
+
+      {/* Real job photos — only on the services FBS has confirmed photos for */}
+      {content.photos && content.photos.length > 0 && (
+        <section className="bg-charcoal py-20 lg:py-28">
+          <div className="container-x">
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <span className="eyebrow text-gold">Our Work</span>
+              <h2 className="section-title mt-4 text-white">{service.title} we have built</h2>
+              {content.photosCaption && (
+                <p className="mt-4 text-lg text-white/70">{content.photosCaption}</p>
+              )}
+            </Reveal>
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {content.photos.map((photo, i) => (
+                <Reveal key={photo.src} delay={i * 80} variant="scale">
+                  <figure className="group overflow-hidden rounded-2xl bg-white/5">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={`/images/work/${photo.src}`}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
+                      <span className="absolute left-4 top-4 rounded-full bg-charcoal/85 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-gold backdrop-blur-sm">
+                        {stageLabel[photo.stage]}
+                      </span>
+                    </div>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-10 text-center text-sm text-white/50">
+              Real FBS Construction jobs. No stock photography on this site.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Benefits */}
       <section className="bg-gray-50 py-20 lg:py-28">

@@ -7,10 +7,22 @@ import type { RemodelingService } from './site';
  * short, bullets, icon) stays small and the long page copy lives in one place.
  *
  * Rules this copy follows, because the pages go live without client review of
- * every line: no invented numbers, no awards, no warranty terms, no project
- * counts and no photos. Only what FBS can back up — the two Massachusetts
- * licenses, the towns already listed in site.ts, and how the work is run.
+ * every line: no invented numbers, no awards, no warranty terms and no project
+ * counts. Only what FBS can back up — the two Massachusetts licenses, the towns
+ * already listed in site.ts, and how the work is run.
+ *
+ * Photos: only real FBS jobs, never stock. As of 23/11/2026 only Sunrooms and
+ * Deck Roofs have confirmed photos (delivered by Ingrid; alt text taken from
+ * her `fotos-alt-text.csv`). The other six pages leave `photos` undefined and
+ * render without a gallery, exactly as before.
  */
+export type RemodelingPhoto = {
+  /** File in /public/images/work, including the extension. */
+  src: string;
+  alt: string;
+  stage: 'before' | 'during' | 'after';
+};
+
 export type RemodelingPage = {
   metaTitle: string;
   metaDescription: string;
@@ -19,6 +31,10 @@ export type RemodelingPage = {
   features: string[];
   benefits: { title: string; text: string }[];
   options: { name: string; text: string }[];
+  /** Real job photos for this service. Omitted where FBS has none yet. */
+  photos?: RemodelingPhoto[];
+  /** Line above the gallery, naming the job the photos come from. */
+  photosCaption?: string;
 };
 
 export const remodelingPages: Record<string, RemodelingPage> = {
@@ -272,6 +288,39 @@ export const remodelingPages: Record<string, RemodelingPage> = {
       { name: 'Sunroom Conversion', text: 'An existing porch or deck area closed in and built out properly.' },
       { name: 'Roof & Glazing Options', text: 'Solid, glass or combination roofs with the window package to match.' },
     ],
+    photosCaption: 'A four-season room we built in Whitinsville, MA — framing through finish.',
+    photos: [
+      {
+        src: 'four-season-room-addition-finished-exterior-whitinsville-ma.webp',
+        alt: 'Finished four-season room addition with white railings and stairs on a gray home in Whitinsville, MA',
+        stage: 'after',
+      },
+      {
+        src: 'four-season-room-addition-windows-gray-siding-whitinsville-ma.webp',
+        alt: 'Four-season room addition with large windows and gray vinyl siding in Whitinsville, MA',
+        stage: 'after',
+      },
+      {
+        src: 'four-season-room-entry-stairs-railings-whitinsville-ma.webp',
+        alt: 'Four-season room entry with white stairs and black balusters in Whitinsville, MA',
+        stage: 'after',
+      },
+      {
+        src: 'four-season-room-interior-new-flooring-whitinsville-ma.webp',
+        alt: 'Interior of a new four-season room with wood-look flooring in Whitinsville, MA',
+        stage: 'during',
+      },
+      {
+        src: 'four-season-room-spray-foam-vaulted-ceiling-whitinsville-ma.webp',
+        alt: 'Spray foam insulation in the vaulted ceiling of a four-season room with skylights',
+        stage: 'during',
+      },
+      {
+        src: 'four-season-room-framing-zip-sheathing-whitinsville-ma.webp',
+        alt: 'Four-season room addition framed and sheathed with ZIP System panels in Whitinsville, MA',
+        stage: 'during',
+      },
+    ],
   },
 
   'screen-porches': {
@@ -351,6 +400,24 @@ export const remodelingPages: Record<string, RemodelingPage> = {
       { name: 'Partial Cover', text: 'Part of the deck covered, part left open to the sun.' },
       { name: 'Finished Ceiling', text: 'A finished underside with lighting and fan wiring instead of bare framing.' },
       { name: 'New Deck & Roof', text: 'Deck and roof designed together, so the structure is right from the footings up.' },
+    ],
+    photosCaption: 'A covered deck we built in Groton, MA — the old deck came out first.',
+    photos: [
+      {
+        src: 'covered-deck-composite-railings-groton-ma.webp',
+        alt: 'New covered deck with white railings and stairs in Groton, MA',
+        stage: 'after',
+      },
+      {
+        src: 'covered-deck-side-view-groton-ma.webp',
+        alt: 'Side view of a new covered deck with vaulted ceiling in Groton, MA',
+        stage: 'after',
+      },
+      {
+        src: 'old-deck-before-replacement-groton-ma.webp',
+        alt: 'Old deck and stairs before the covered deck project in Groton, MA',
+        stage: 'before',
+      },
     ],
   },
 };
